@@ -19,6 +19,8 @@ test("reference = lowest English retail shop price, ignores Japanese", () => {
   assert.deepEqual(reference(state, etb), { price: 849, shop: "Webhallen", manual: false });
   assert.equal(reference(state, { ...etb, maxPrice: 700 })?.price, 700);
   assert.equal(reference(state, { ...etb, match: ["nonexistent"] }), null);
+  const dlOnly: State = { "Dragon's Lair": { x: s("Delta Reign Elite Trainer Box", 1295) } };
+  assert.equal(reference(dlOnly, etb), null); // Dragon's Lair never sets the reference
 });
 
 test("deal only when Buy Now is strictly below reference and listing is not junk", () => {

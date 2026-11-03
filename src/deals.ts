@@ -22,11 +22,15 @@ const NOT_RETAIL = /japansk|japanese|kinesisk|chinese|korean|sleeved|acrylic|akr
 
 export const matches = (title: string, item: DealItem) => item.match.every((m) => new RegExp(m, "i").test(title));
 
+// Still watched for restocks, but its prices run above market, so it never sets the "deal" bar.
+const NOT_A_REFERENCE = new Set(["Dragon's Lair"]);
+
 /** Lowest listed shop price for the item, measured from the latest scrape. */
 export function reference(state: State, item: DealItem): Reference | null {
   if (item.maxPrice) return { price: item.maxPrice, shop: "your max price", manual: true };
   let best: Reference | null = null;
   for (const [shop, products] of Object.entries(state)) {
+    if (NOT_A_REFERENCE.has(shop)) continue;
     for (const p of Object.values(products)) {
       if (!p.price || NOT_RETAIL.test(p.title) || !matches(p.title, item)) continue;
       if (!best || p.price < best.price) best = { price: p.price, shop, manual: false };

@@ -1,5 +1,10 @@
 # Progress
 
+## 2026-11-03 (v0.8.0)
+- Dragon's Lair no longer sets the Tradera "deal" reference price (prices run above market, Edwin's call); still watched for restocks.
+  - Impact: Pokémon 13/21 items keep a reference (lost: 30th ETB, ex Box, tins, blister, Journey Together, Prismatic BB); MTG 23/75.
+  - Cardmarket check (Aetherdrift Play Box EN): from 89 EUR, trend 93.55 EUR (~974 / 1,024 kr at ECB 10.9475) vs Tradera 1,249 kr; Cardmarket blocks scripts (Cloudflare 403), browser passes.
+
 ## 2026-11-03 (v0.7.0)
 - Tradera limit is 10,000 SearchAdvanced/day per app (Edwin's app dashboard), not 100 as the docs say. Every group now searched every run (8 calls/run).
 - `minDiscount` per deals file: Pokémon 10%, MTG 15% below lowest shop price. Non-English (Spanish/German/French/...) listings skipped.

@@ -2,13 +2,13 @@ import type { TraderaItem } from "./tradera.ts";
 import type { State } from "./types.ts";
 
 export interface DealItem { name: string; group: string; match: string[]; maxPrice?: number }
-export interface DealsConfig { groups: Record<string, string>; schedule?: string[]; items: DealItem[] }
+export interface DealsConfig { groups: Record<string, string>; minDiscount?: number; items: DealItem[] }
 export interface Reference { price: number; shop: string; manual: boolean }
 export interface Deal { item: DealItem; listing: TraderaItem; ref: Reference }
 
 // Listings that look like the product but aren't the sealed English product.
 export const JUNK =
-  /\btom(ma)?\b|empty|endast|\bonly\b|\butan\b|sleeves?|\bpins?\b|proxy|fake|kopia|replika|japansk|japanese|\bjp\b|kinesisk|chinese|korean|koreansk|\blösa?\b|single|digital|\bkod\b|\bcode\b|sleeved|(?<!o)öppna[dt]?|(?<!o)öppen|opened|begagnad|\bused\b|skadad|damaged|plocka[dt]|uttagna?|saknas|ej komplett|inte komplett|ofullständig|missing/i;
+  /\btom(ma)?\b|empty|endast|\bonly\b|\butan\b|sleeves?|\bpins?\b|proxy|fake|kopia|replika|japansk|japanese|\bjp\b|kinesisk|chinese|korean|koreansk|spanska?|tyska?|german|franska?|french|italiensk[a]?|italian|portugisisk[a]?|ryska?|russian|\blösa?\b|single|digital|\bkod\b|\bcode\b|sleeved|(?<!o)öppna[dt]?|(?<!o)öppen|opened|begagnad|\bused\b|skadad|damaged|plocka[dt]|uttagna?|saknas|ej komplett|inte komplett|ofullständig|missing/i;
 // The seller must say it's sealed (title or description), otherwise we skip it.
 const SEALED = /förseglad|fabriksförseglad|inplastad|i plast|oöppnad|oöppnat|obruten|sealed|shrink ?wrap/i;
 
@@ -41,15 +41,15 @@ export function groupCeiling(state: State, items: DealItem[]): number | null {
   return refs.length ? Math.max(...refs) - 1 : null;
 }
 
-/** Buy Now listings strictly below the reference for any item in the group. */
-export function findDeals(listings: TraderaItem[], items: DealItem[], state: State): Deal[] {
+/** Buy Now listings at least `minDiscount` (0.15 = 15%) below the reference for any item in the group. */
+export function findDeals(listings: TraderaItem[], items: DealItem[], state: State, minDiscount = 0): Deal[] {
   const deals: Deal[] = [];
   for (const listing of listings) {
     if (listing.buyNow == null || JUNK.test(listing.title)) continue;
     for (const item of items) {
       if (!matches(listing.title, item)) continue;
       const ref = reference(state, item);
-      if (ref && listing.buyNow < ref.price) deals.push({ item, listing, ref });
+      if (ref && listing.buyNow < ref.price * (1 - minDiscount)) deals.push({ item, listing, ref });
       if (ref) break; // first item with a known shop price wins
     }
   }

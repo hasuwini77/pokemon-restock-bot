@@ -57,7 +57,7 @@ export const channels: Channel[] = [
       appId: env.TRADERA_MTG_APP_ID,
       appKey: env.TRADERA_MTG_APP_KEY,
       dealsFile: "deals-mtg.json",
-      stateFile: "tradera-state-mtg.json",
+      stateFile: env.TRADERA_MTG_STATE_FILE ?? "tradera-state-mtg.json",
     },
   },
 ];

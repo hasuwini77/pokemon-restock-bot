@@ -58,3 +58,14 @@ test("item page description is decoded", () => {
   assert.match(d, /Säljer en ÖPPNAD box/);
   assert.match(d, /Endast plockat/);
 });
+
+test("spread: median ask vs lowest shop price", async () => {
+  const { spreadRows } = await import("../src/spread.ts");
+  const rows = spreadRows([
+    listing("1", "Delta Reign Elite Trainer Box", 1200),
+    listing("2", "Delta Reign Elite Trainer Box ny", 1400),
+    listing("3", "TOM Delta Reign Elite Trainer Box", 50),
+    listing("4", "Delta Reign Elite Trainer Box", 1600),
+  ], [etb], state);
+  assert.deepEqual(rows[0], { name: "Delta Reign ETB", shop: 849, shopName: "Webhallen", n: 3, low: 1200, median: 1400, pct: 65 });
+});

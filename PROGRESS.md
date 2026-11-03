@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-11-03 (v0.4.0)
+- Spread report (`src/spread.ts`, weekly Mon 07:00 UTC + manual): Tradera Buy Now median ASK vs lowest shop price per item, 5 calls.
+  - First live run: 30th Booster Bundle +44% (n=54), Destined Rivals ETB +66% (n=24), 30th ETB +77% (n=6), 30th Mini Tin +58% (n=7). Asking, not sold.
+
 ## 2026-11-03 (v0.3.0)
 - Tradera sealed-only: candidate's seller description fetched from item page; must say sealed (förseglad/inplastad/oöppnad), rejects opened/picked/missing. Real 319 kr "opened + picked" ETB now rejected (verified on saved page).
 - 30th Celebration focus: dedicated Tradera group run every other call (8 items, refs from shops), ⭐ on 30th alerts.

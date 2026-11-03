@@ -50,3 +50,9 @@ test("sfbok: escaped RSC payload", () => {
   assert.deepEqual([p.id, p.inStock, p.price], ["746893", false, 95]);
   assert.match(p.url, /\/746893\/abyss-eye$/);
 });
+
+test("alphaspel: out-of-stock card without cart link gets its own id, not the category's", () => {
+  const html = `<div class="product"><a href="/1982-boosters/354000-foundations-beginner-box"><img src="/x.png"></a>
+    <div class="product-name">Magic: Foundations Beginner Box</div><div class="price">489 kr</div><div class="stock">Slut</div>`;
+  assert.equal(parseAlphaspel(html)[0].id, "354000");
+});

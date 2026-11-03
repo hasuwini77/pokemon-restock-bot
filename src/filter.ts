@@ -7,3 +7,12 @@ const EXCLUDE =
 export function isWatched(title: string): boolean {
   return /pok[eé]mon/i.test(title) && SEALED.test(title) && !EXCLUDE.test(title);
 }
+
+// Magic: sealed boxes/displays, collector boosters, bundles. Single play/draft packs are noise.
+const MTG_SEALED = /booster ?(box|display)|display|collector|bundle|booster box/i;
+const MTG_EXCLUDE =
+  /sleeve|deck ?box|playmat|spelmatta|pärm|binder|tärning|dice|life ?counter|token|proxy|\bsingle\b|förvaring|storage|acryl|akryl|figur/i;
+
+export function isWatchedMtg(title: string): boolean {
+  return MTG_SEALED.test(title) && !MTG_EXCLUDE.test(title);
+}

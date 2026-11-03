@@ -49,3 +49,22 @@ test("filter keeps sealed TCG, drops merch", () => {
   assert.ok(!isWatched("Pokemon ME5 Pitch Black Samlarpärm 9-fickor"));
   assert.ok(!isWatched("Magic: The Gathering Booster Box"));
 });
+
+test("in-stock price drop of 10%+ fires drop with note", () => {
+  const s: State = {};
+  diff(s, "S", [p("a", true)], t0);
+  const cheaper = { ...p("a", true), price: 85 };
+  const [a] = diff(s, "S", [cheaper], later(1));
+  assert.equal(a.kind, "drop");
+  assert.equal(a.note, "was 100 kr (-15%)");
+  assert.equal(diff(s, "S", [{ ...p("a", true), price: 80 }], later(2)).length, 0); // -6%, below threshold
+});
+
+test("mtg filter keeps boxes, collector and bundles; drops packs and accessories", async () => {
+  const { isWatchedMtg } = await import("../src/filter.ts");
+  assert.ok(isWatchedMtg("Magic The Gathering: Avatar: The Last Airbender Play Booster Display (30)"));
+  assert.ok(isWatchedMtg("Aetherdrift Collector Booster"));
+  assert.ok(isWatchedMtg("Magic The Gathering: Marvel Super Heroes Bundle"));
+  assert.ok(!isWatchedMtg("Foundations Play Booster"));
+  assert.ok(!isWatchedMtg("Ultra Pro Deck Box Collector"));
+});

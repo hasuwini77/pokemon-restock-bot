@@ -12,10 +12,10 @@ interface WhProduct {
   stock: Record<string, unknown> & { web?: number };
 }
 
-export function parseWebhallen(json: string): { products: Product[]; total: number } {
+export function parseWebhallen(json: string, category = /Samlarkortspel\/Pok/i): { products: Product[]; total: number } {
   const d = JSON.parse(json) as { products: WhProduct[]; totalProductCount: number };
   const products = d.products
-    .filter((p) => /Samlarkortspel\/Pok/i.test(p.categoryTree))
+    .filter((p) => category.test(p.categoryTree))
     .map((p) => {
       // Numeric keys = physical stores; "web" = webshop.
       const stores = Object.entries(p.stock)
@@ -34,14 +34,14 @@ export function parseWebhallen(json: string): { products: Product[]; total: numb
   return { products, total: d.totalProductCount };
 }
 
-export async function webhallen(): Promise<Product[]> {
+export async function webhallen(query = "pokemon", category = /Samlarkortspel\/Pok/i): Promise<Product[]> {
   const all: Product[] = [];
   let total = Infinity; // only page 1 reports totalProductCount (later pages return null)
   for (let page = 1; page <= 12; page++) {
     const json = await get(
-      `${BASE}/api/productdiscovery/search/pokemon?page=${page}&touchpoint=DESKTOP&totalProductCountSet=${page > 1}`,
+      `${BASE}/api/productdiscovery/search/${encodeURIComponent(query)}?page=${page}&touchpoint=DESKTOP&totalProductCountSet=${page > 1}`,
     );
-    const res = parseWebhallen(json);
+    const res = parseWebhallen(json, category);
     if (page === 1) total = res.total;
     all.push(...res.products);
     if (page * 24 >= total) break;

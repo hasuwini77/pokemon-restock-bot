@@ -1,5 +1,9 @@
 # pokemon-restock-bot
 
+Two Discord channels: **pokemon** (`DISCORD_WEBHOOK_URL`) and **mtg** (`DISCORD_MTG_WEBHOOK_URL`), same 4 shops.
+MTG tracks booster boxes/displays, collector boosters and bundles (`isWatchedMtg` in `src/filter.ts`), ⭐ on Collector.
+Both channels alert on restock, new listing, and **price drop ≥10%** on in-stock items.
+
 Polls Swedish Pokémon TCG shops every ~10 min (free GitHub Actions) and pings Discord when sealed product
 **comes back in stock** or a **new listing** appears.
 

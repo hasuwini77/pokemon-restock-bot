@@ -864,9 +864,10 @@
   },
   "15554385838428": {
    "title": "Pokémon TCG - White Flare Booster Japansk (SV11W)",
-   "inStock": false,
-   "price": 89,
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "inStock": true,
+   "price": 79,
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-03T17:03:36.048Z"
   },
   "15669973844316": {
    "title": "Pokémon TCG: Mega Evolution - Pitch Black Checklane Blister",
@@ -937,9 +938,10 @@
   },
   "15662376583516": {
    "title": "Pokémon Scarlet & Violet: White Flare Booster Box (20 Pack) (Japanskt)(SV11W)",
-   "inStock": false,
-   "price": 1690,
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "inStock": true,
+   "price": 2249,
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-03T17:03:36.048Z"
   },
   "15554246443356": {
    "title": "Pokémon TCG: Scarlet & Violet - Prismatic Evolutions Elite Trainer Box",

@@ -1,5 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { findDeals, groupCeiling, type DealsConfig } from "./deals.ts";
+import { findDeals, groupCeiling, isSealedListing, type DealsConfig } from "./deals.ts";
 import { diff } from "./diff.ts";
 import { sendDiscord } from "./discord.ts";
 import { isWatched } from "./filter.ts";
@@ -7,7 +7,8 @@ import { alphaspel } from "./shops/alphaspel.ts";
 import { dragonslair } from "./shops/dragonslair.ts";
 import { sfbok } from "./shops/sfbok.ts";
 import { webhallen } from "./shops/webhallen.ts";
-import { searchTradera } from "./tradera.ts";
+import { get, sleep } from "./http.ts";
+import { parseDescription, searchTradera } from "./tradera.ts";
 import type { Alert, Product, State } from "./types.ts";
 
 const SHOPS: Record<string, () => Promise<Product[]>> = {
@@ -58,7 +59,7 @@ const { TRADERA_APP_ID: appId, TRADERA_APP_KEY: appKey } = process.env;
 const due = !tState.lastCall || Date.now() - Date.parse(tState.lastCall) >= 19 * 60_000;
 if (appId && appKey && due && failures < Object.keys(SHOPS).length) {
   const cfg: DealsConfig = JSON.parse(await readFile("deals.json", "utf8"));
-  const groups = Object.keys(cfg.groups);
+  const groups = cfg.schedule ?? Object.keys(cfg.groups);
   const group = groups[tState.next % groups.length];
   tState.next = (tState.next + 1) % groups.length;
   tState.lastCall = new Date().toISOString();
@@ -76,15 +77,28 @@ if (appId && appKey && due && failures < Object.keys(SHOPS).length) {
     if (res.errors.length) throw new Error(res.errors.join("; "));
     const deals = findDeals(res.items, items, state);
     const fresh = deals.filter((d) => !tState.seen[d.listing.id]);
+    let sent = 0;
     for (const d of fresh) {
-      tState.seen[d.listing.id] = tState.lastCall;
+      tState.seen[d.listing.id] = tState.lastCall; // checked once, alert or not
+      try {
+        const desc = parseDescription(await get(d.listing.url.replace(/^http:/, "https:")));
+        await sleep(1000);
+        if (!isSealedListing(d.listing.title, desc)) {
+          console.log(`  skip (not clearly sealed): ${d.listing.title} · ${d.listing.buyNow} kr`);
+          continue;
+        }
+      } catch (e) {
+        console.log(`  skip (description unreadable: ${e}): ${d.listing.title}`);
+        continue;
+      }
+      sent++;
       alerts.push({
         kind: "deal",
         product: { shop: "Tradera", id: d.listing.id, title: d.listing.title, url: d.listing.url, price: d.listing.buyNow, inStock: true, image: d.listing.image },
         note: `${d.item.name} · ${d.ref.manual ? "your max" : `lowest shop price ${d.ref.price} kr at ${d.ref.shop}`}`,
       });
     }
-    console.log(`Tradera [${group}] <= ${ceiling} kr: ${res.items.length} of ${res.total} listings, ${deals.length} below ref, ${fresh.length} alerts`);
+    console.log(`Tradera [${group}] <= ${ceiling} kr: ${res.items.length} of ${res.total} listings, ${deals.length} below ref, ${fresh.length} unseen, ${sent} alerts`);
   } catch (e) {
     console.error(`Tradera: FAILED ${e}`);
   }

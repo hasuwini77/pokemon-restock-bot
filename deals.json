@@ -1,26 +1,190 @@
 {
-  "_help": "Each item alerts when a Tradera Buy Now price is below the lowest price for the same product in our Swedish shops (state.json). `match` = regexes that must all hit the title. Optional `maxPrice` (SEK) overrides the shop reference.",
+  "_help": "Each item alerts when a Tradera Buy Now price is below the lowest price for the same product in our Swedish shops (state.json). `match` = regexes that must all hit the title. Optional `maxPrice` (SEK) overrides the shop reference. `schedule` = query order (30th runs every other call).",
   "groups": {
+    "30th": "pokemon 30th celebration",
     "etb": "pokemon elite trainer box",
     "bundle": "pokemon booster bundle",
     "display": "pokemon booster display",
     "premium": "pokemon premium collection"
   },
   "items": [
-    { "name": "Delta Reign ETB", "group": "etb", "match": ["delta reign", "elite trainer"] },
-    { "name": "Pitch Black ETB", "group": "etb", "match": ["pitch black", "elite trainer"] },
-    { "name": "Chaos Rising ETB", "group": "etb", "match": ["chaos rising", "elite trainer"] },
-    { "name": "Destined Rivals ETB", "group": "etb", "match": ["destined rivals", "elite trainer"] },
-    { "name": "Journey Together ETB", "group": "etb", "match": ["journey together", "elite trainer"] },
-    { "name": "Delta Reign Booster Bundle", "group": "bundle", "match": ["delta reign", "bundle"] },
-    { "name": "Pitch Black Booster Bundle", "group": "bundle", "match": ["pitch black", "bundle"] },
-    { "name": "Chaos Rising Booster Bundle", "group": "bundle", "match": ["chaos rising", "bundle"] },
-    { "name": "30th Celebration Booster Bundle", "group": "bundle", "match": ["30th|30-års", "bundle"] },
-    { "name": "Prismatic Evolutions Booster Bundle", "group": "bundle", "match": ["prismatic", "bundle"] },
-    { "name": "Delta Reign Booster Display", "group": "display", "match": ["delta reign", "display"] },
-    { "name": "Destined Rivals Booster Display", "group": "display", "match": ["destined rivals", "display"] },
-    { "name": "Journey Together Booster Display", "group": "display", "match": ["journey together", "display"] },
-    { "name": "Prismatic Evolutions Super Premium Collection", "group": "premium", "match": ["prismatic", "super premium"] },
-    { "name": "30th Celebration Ultra-Premium Collection", "group": "premium", "match": ["30th|30-års", "ultra.?premium|upc"] }
+    {
+      "name": "30th Celebration ETB",
+      "group": "30th",
+      "match": [
+        "30th|30[- ]?år|anniversary",
+        "elite trainer"
+      ]
+    },
+    {
+      "name": "30th Celebration Booster Bundle",
+      "group": "30th",
+      "match": [
+        "30th|30[- ]?år|anniversary",
+        "bundle"
+      ]
+    },
+    {
+      "name": "30th Celebration Ultra-Premium Collection",
+      "group": "30th",
+      "match": [
+        "30th|30[- ]?år|anniversary",
+        "ultra.?premium|upc"
+      ]
+    },
+    {
+      "name": "30th Celebration Ditto Premium Collection",
+      "group": "30th",
+      "match": [
+        "30th|30[- ]?år|anniversary",
+        "ditto"
+      ]
+    },
+    {
+      "name": "30th Celebration ex Box",
+      "group": "30th",
+      "match": [
+        "30th|30[- ]?år|anniversary",
+        "ex box"
+      ]
+    },
+    {
+      "name": "30th Celebration Mini Tin",
+      "group": "30th",
+      "match": [
+        "30th|30[- ]?år|anniversary",
+        "mini ?tin"
+      ]
+    },
+    {
+      "name": "30th Celebration Tin",
+      "group": "30th",
+      "match": [
+        "30th|30[- ]?år|anniversary",
+        "(?<!mini ?)\\btin\\b"
+      ]
+    },
+    {
+      "name": "30th Celebration 2-Pack Blister",
+      "group": "30th",
+      "match": [
+        "30th|30[- ]?år|anniversary",
+        "blister"
+      ]
+    },
+    {
+      "name": "Delta Reign ETB",
+      "group": "etb",
+      "match": [
+        "delta reign",
+        "elite trainer"
+      ]
+    },
+    {
+      "name": "Pitch Black ETB",
+      "group": "etb",
+      "match": [
+        "pitch black",
+        "elite trainer"
+      ]
+    },
+    {
+      "name": "Chaos Rising ETB",
+      "group": "etb",
+      "match": [
+        "chaos rising",
+        "elite trainer"
+      ]
+    },
+    {
+      "name": "Destined Rivals ETB",
+      "group": "etb",
+      "match": [
+        "destined rivals",
+        "elite trainer"
+      ]
+    },
+    {
+      "name": "Journey Together ETB",
+      "group": "etb",
+      "match": [
+        "journey together",
+        "elite trainer"
+      ]
+    },
+    {
+      "name": "Delta Reign Booster Bundle",
+      "group": "bundle",
+      "match": [
+        "delta reign",
+        "bundle"
+      ]
+    },
+    {
+      "name": "Pitch Black Booster Bundle",
+      "group": "bundle",
+      "match": [
+        "pitch black",
+        "bundle"
+      ]
+    },
+    {
+      "name": "Chaos Rising Booster Bundle",
+      "group": "bundle",
+      "match": [
+        "chaos rising",
+        "bundle"
+      ]
+    },
+    {
+      "name": "Prismatic Evolutions Booster Bundle",
+      "group": "bundle",
+      "match": [
+        "prismatic",
+        "bundle"
+      ]
+    },
+    {
+      "name": "Delta Reign Booster Display",
+      "group": "display",
+      "match": [
+        "delta reign",
+        "display"
+      ]
+    },
+    {
+      "name": "Destined Rivals Booster Display",
+      "group": "display",
+      "match": [
+        "destined rivals",
+        "display"
+      ]
+    },
+    {
+      "name": "Journey Together Booster Display",
+      "group": "display",
+      "match": [
+        "journey together",
+        "display"
+      ]
+    },
+    {
+      "name": "Prismatic Evolutions Super Premium Collection",
+      "group": "premium",
+      "match": [
+        "prismatic",
+        "super premium"
+      ]
+    }
+  ],
+  "schedule": [
+    "30th",
+    "etb",
+    "30th",
+    "bundle",
+    "30th",
+    "display",
+    "30th",
+    "premium"
   ]
 }

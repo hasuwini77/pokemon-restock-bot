@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { findDeals, reference, type DealItem } from "../src/deals.ts";
-import { parseSearch } from "../src/tradera.ts";
+import { findDeals, isSealedListing, reference, type DealItem } from "../src/deals.ts";
+import { parseDescription, parseSearch } from "../src/tradera.ts";
 import type { State } from "../src/types.ts";
 
 const s = (title: string, price: number) => ({ title, price, inStock: false, firstSeen: "" });
@@ -42,4 +42,19 @@ test("tradera SOAP result parses", () => {
   const r = parseSearch(xml);
   assert.equal(r.total, 640);
   assert.deepEqual([r.items[0].id, r.items[0].title, r.items[0].buyNow], ["42", "Pokémon ETB & more", 1552]);
+});
+
+test("sealed-only: seller description decides", () => {
+  const t = "Pitch Black | Elite Trainer Box | Pokémonkort";
+  assert.ok(!isSealedListing(t, "Endast plockat ut Card Sleeves och de bästa korten från boosterpaketen i boxen."));
+  assert.ok(!isSealedListing(t, "Säljer en ÖPPNAD Elite Trainer Box"));
+  assert.ok(!isSealedListing(t, "Fin box, snabb leverans"));
+  assert.ok(isSealedListing(t, "Helt ny, oöppnad och inplastad."));
+});
+
+test("item page description is decoded", () => {
+  const html = `<script>{"@type":"Product","description":"S\\u0026#228;ljer en \\u0026#214;PPNAD box.\\u003Cbr /\\u003EEndast plockat"}</script>`;
+  const d = parseDescription(html);
+  assert.match(d, /Säljer en ÖPPNAD box/);
+  assert.match(d, /Endast plockat/);
 });

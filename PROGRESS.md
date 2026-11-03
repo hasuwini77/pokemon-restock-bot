@@ -1,5 +1,10 @@
 # Progress
 
+## 2026-11-03 (v0.9.1)
+- GitHub `schedule` never fired (0 runs in ~2 h). Fix: `rearm` job sleeps 540 s, then re-dispatches poll.yml with GITHUB_TOKEN. Cron kept as restarter; `poll` concurrency group collapses duplicates.
+  - Verified: run 14:07:50 (poll + rearm success) auto-started run 14:17:28.
+  - Free only while the repo is public (~1,600 runner-min/day). cron-job.org dropped (activation email never arrived).
+
 ## 2026-11-03 (v0.9.0)
 - Cardmarket reference via official free daily files (downloads.s3.cardmarket.com productList/priceGuide, game 1 MTG / 6 Pokémon), EUR->SEK via ECB; cached 20 h in cardmarket-*.json.
   - Deal reference = cheapest of (Swedish shops excl. Dragon's Lair, Cardmarket trend + `cardmarketShippingSek`, default 0). Per-item `cm` regex picks the exact Cardmarket product (excludes JP/CN/cases/Pokémon Center/Omega).

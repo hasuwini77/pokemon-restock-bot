@@ -6,7 +6,7 @@ import { JUNK, matches, reference, type CmRef, type DealItem, type DealsConfig }
 import { searchTradera, type TraderaItem } from "./tradera.ts";
 import type { State } from "./types.ts";
 
-export interface SpreadRow { name: string; shop: number | null; shopName: string; n: number; low: number | null; median: number | null; pct: number | null }
+export interface SpreadRow { name: string; shop: number | null; shopName: string; shopUrl?: string; n: number; low: number | null; median: number | null; pct: number | null }
 
 const median = (xs: number[]) => {
   const s = [...xs].sort((a, b) => a - b);
@@ -24,6 +24,7 @@ export function spreadRows(listings: TraderaItem[], items: DealItem[], state: St
       name: item.name,
       shop: ref?.price ?? null,
       shopName: ref?.shop ?? "-",
+      shopUrl: ref?.url,
       n: asks.length,
       low: asks.length ? Math.min(...asks) : null,
       median: med,
@@ -32,12 +33,21 @@ export function spreadRows(listings: TraderaItem[], items: DealItem[], state: St
   });
 }
 
-export function formatRows(rows: SpreadRow[]): string {
-  const sorted = [...rows].sort((a, b) => (b.pct ?? -999) - (a.pct ?? -999));
-  const lines = sorted.map((r) =>
-    `${(r.pct == null ? "  n/a" : `${r.pct > 0 ? "+" : ""}${r.pct}%`).padStart(6)}  ${String(r.shop ?? "-").padStart(5)} → ${String(r.median ?? "-").padStart(5)} kr  n=${String(r.n).padStart(2)}  ${r.name}`,
-  );
-  return ["  gap   ref → Tradera median ask (ref = cheapest of Swedish shops excl. Dragon's Lair and Cardmarket trend)", ...lines].join("\n");
+const kr = (n: number) => `${Math.round(n).toLocaleString("sv-SE")} kr`;
+const traderaSearch = (name: string) => `https://www.tradera.com/search?q=${encodeURIComponent(name)}`;
+
+/** Short Discord list: only real gaps (>= minPct, >= minAds listings), best first, every price clickable. */
+export function formatFlips(rows: SpreadRow[], minPct = 20, minAds = 2, max = 10): string {
+  const ok = rows.filter((r) => r.pct != null && r.pct >= minPct && r.n >= minAds && r.shop != null && r.median != null);
+  const top = ok.sort((a, b) => (b.pct as number) - (a.pct as number)).slice(0, max);
+  if (!top.length) return "Nothing worth flipping this week.";
+  const buyAt = (r: SpreadRow) => {
+    const where = r.shopName.startsWith("Cardmarket") ? "Cardmarket" : r.shopName;
+    return r.shopUrl ? `[${where}](${r.shopUrl})` : where;
+  };
+  return top
+    .map((r) => `**+${r.pct}%** · ${r.name}\nBuy **${kr(r.shop!)}** at ${buyAt(r)} → [Tradera](${traderaSearch(r.name)}) asks ~**${kr(r.median!)}** (${r.n} ads)`)
+    .join("\n\n");
 }
 
 if (import.meta.main) {
@@ -45,25 +55,27 @@ if (import.meta.main) {
   if (!appId || !appKey) throw new Error("TRADERA_APP_ID / TRADERA_APP_KEY not set");
   const cfg: DealsConfig = JSON.parse(await readFile(process.env.DEALS_FILE ?? "deals.json", "utf8"));
   const state: State = JSON.parse(await readFile(process.env.STATE_FILE ?? "state.json", "utf8"));
-  const cmIndex = await loadCardmarket(Number(process.env.CM_GAME ?? 6), process.env.CM_FILE ?? "cardmarket-pokemon.json");
-  const cm = cmIndex && { index: cmIndex, shippingSek: cfg.cardmarketShippingSek ?? 0 };
+  const game = Number(process.env.CM_GAME ?? 6);
+  const cmIndex = await loadCardmarket(game, process.env.CM_FILE ?? "cardmarket-pokemon.json");
+  const cm = cmIndex && { index: cmIndex, shippingSek: cfg.cardmarketShippingSek ?? 0, site: game === 1 ? "Magic" : "Pokemon" };
   const rows: SpreadRow[] = [];
   for (const [group, words] of Object.entries(cfg.groups)) {
     const res = await searchTradera(appId, appKey, { SearchWords: words, OnlyAuctionsWithBuyNow: true, ItemsPerPage: 240, PageNumber: 1 });
     rows.push(...spreadRows(res.items, cfg.items.filter((i) => i.group === group), state, cm));
     console.log(`[${group}] ${res.items.length} of ${res.total} Buy Now listings`);
   }
-  const table = formatRows(rows);
-  console.log(table);
+  const text = formatFlips(rows);
+  console.log(text);
   if (webhook && !process.env.DRY_RUN) {
     const res = await fetch(webhook, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         embeds: [{
-          title: "📊 Spread report: shop price vs Tradera asking price",
+          title: "💰 Best flips this week",
           color: 0x9b59b6,
-          description: "```\n" + table.slice(0, 3900) + "\n```\nAsking prices (not sold), titles filtered for opened/empty/JP/CN. Small n = weak signal.",
+          description: text.slice(0, 3900),
+          footer: { text: "Tradera = asking prices, not sold. Only gaps ≥ 20% with 2+ ads." },
         }],
       }),
     });

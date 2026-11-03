@@ -1,0 +1,631 @@
+{
+  "_help": "MTG: alerts when a sealed Tradera Buy Now is below the lowest shop price for the same product (state-mtg.json). Items without any shop price are skipped. `schedule`: collector runs every other call.",
+  "groups": {
+    "collector": "magic the gathering collector booster",
+    "playbox": "magic the gathering play booster display",
+    "bundle": "magic the gathering bundle"
+  },
+  "schedule": [
+    "collector",
+    "playbox",
+    "collector",
+    "bundle"
+  ],
+  "items": [
+    {
+      "name": "Final Fantasy Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "final fantasy",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Final Fantasy Collector Booster",
+      "group": "collector",
+      "match": [
+        "final fantasy",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Final Fantasy Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "final fantasy",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Final Fantasy Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "final fantasy",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Final Fantasy Bundle",
+      "group": "bundle",
+      "match": [
+        "final fantasy",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Avatar: TLA Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "avatar|last airbender",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Avatar: TLA Collector Booster",
+      "group": "collector",
+      "match": [
+        "avatar|last airbender",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Avatar: TLA Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "avatar|last airbender",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Avatar: TLA Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "avatar|last airbender",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Avatar: TLA Bundle",
+      "group": "bundle",
+      "match": [
+        "avatar|last airbender",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Marvel Super Heroes Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "marvel super heroes",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Marvel Super Heroes Collector Booster",
+      "group": "collector",
+      "match": [
+        "marvel super heroes",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Marvel Super Heroes Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "marvel super heroes",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Marvel Super Heroes Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "marvel super heroes",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Marvel Super Heroes Bundle",
+      "group": "bundle",
+      "match": [
+        "marvel super heroes",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Spider-Man Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "spider-?man",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Spider-Man Collector Booster",
+      "group": "collector",
+      "match": [
+        "spider-?man",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Spider-Man Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "spider-?man",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Spider-Man Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "spider-?man",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Spider-Man Bundle",
+      "group": "bundle",
+      "match": [
+        "spider-?man",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "TMNT Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "teenage mutant|tmnt|ninja turtles",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "TMNT Collector Booster",
+      "group": "collector",
+      "match": [
+        "teenage mutant|tmnt|ninja turtles",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "TMNT Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "teenage mutant|tmnt|ninja turtles",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "TMNT Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "teenage mutant|tmnt|ninja turtles",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "TMNT Bundle",
+      "group": "bundle",
+      "match": [
+        "teenage mutant|tmnt|ninja turtles",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "The Hobbit Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "hobbit",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "The Hobbit Collector Booster",
+      "group": "collector",
+      "match": [
+        "hobbit",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "The Hobbit Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "hobbit",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "The Hobbit Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "hobbit",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "The Hobbit Bundle",
+      "group": "bundle",
+      "match": [
+        "hobbit",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Edge of Eternities Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "edge of eternities",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Edge of Eternities Collector Booster",
+      "group": "collector",
+      "match": [
+        "edge of eternities",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Edge of Eternities Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "edge of eternities",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Edge of Eternities Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "edge of eternities",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Edge of Eternities Bundle",
+      "group": "bundle",
+      "match": [
+        "edge of eternities",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Lorwyn Eclipsed Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "lorwyn eclipsed",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Lorwyn Eclipsed Collector Booster",
+      "group": "collector",
+      "match": [
+        "lorwyn eclipsed",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Lorwyn Eclipsed Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "lorwyn eclipsed",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Lorwyn Eclipsed Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "lorwyn eclipsed",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Lorwyn Eclipsed Bundle",
+      "group": "bundle",
+      "match": [
+        "lorwyn eclipsed",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Reality Fracture Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "reality fracture",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Reality Fracture Collector Booster",
+      "group": "collector",
+      "match": [
+        "reality fracture",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Reality Fracture Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "reality fracture",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Reality Fracture Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "reality fracture",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Reality Fracture Bundle",
+      "group": "bundle",
+      "match": [
+        "reality fracture",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Aetherdrift Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "aetherdrift",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Aetherdrift Collector Booster",
+      "group": "collector",
+      "match": [
+        "aetherdrift",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Aetherdrift Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "aetherdrift",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Aetherdrift Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "aetherdrift",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Aetherdrift Bundle",
+      "group": "bundle",
+      "match": [
+        "aetherdrift",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Duskmourn Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "duskmourn",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Duskmourn Collector Booster",
+      "group": "collector",
+      "match": [
+        "duskmourn",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Duskmourn Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "duskmourn",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Duskmourn Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "duskmourn",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Duskmourn Bundle",
+      "group": "bundle",
+      "match": [
+        "duskmourn",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Foundations Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "foundations",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Foundations Collector Booster",
+      "group": "collector",
+      "match": [
+        "foundations",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Foundations Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "foundations",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Foundations Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "foundations",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Foundations Bundle",
+      "group": "bundle",
+      "match": [
+        "foundations",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Innistrad Remastered Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "innistrad remastered",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Innistrad Remastered Collector Booster",
+      "group": "collector",
+      "match": [
+        "innistrad remastered",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Innistrad Remastered Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "innistrad remastered",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Innistrad Remastered Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "innistrad remastered",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Innistrad Remastered Bundle",
+      "group": "bundle",
+      "match": [
+        "innistrad remastered",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "Star Trek Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "star trek",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "Star Trek Collector Booster",
+      "group": "collector",
+      "match": [
+        "star trek",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "Star Trek Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "star trek",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "Star Trek Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "star trek",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "Star Trek Bundle",
+      "group": "bundle",
+      "match": [
+        "star trek",
+        "^(?!.*gift).*bundle"
+      ]
+    },
+    {
+      "name": "LOTR: Tales of Middle-earth Collector Booster Display",
+      "group": "collector",
+      "match": [
+        "tales of middle-earth|lord of the rings",
+        "collector'?s? boost",
+        "display|box|\\(12\\)"
+      ]
+    },
+    {
+      "name": "LOTR: Tales of Middle-earth Collector Booster",
+      "group": "collector",
+      "match": [
+        "tales of middle-earth|lord of the rings",
+        "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ]
+    },
+    {
+      "name": "LOTR: Tales of Middle-earth Play Booster Display",
+      "group": "playbox",
+      "match": [
+        "tales of middle-earth|lord of the rings",
+        "play (booster )?(display|box)"
+      ]
+    },
+    {
+      "name": "LOTR: Tales of Middle-earth Gift Bundle",
+      "group": "bundle",
+      "match": [
+        "tales of middle-earth|lord of the rings",
+        "gift bundle|gift edition"
+      ]
+    },
+    {
+      "name": "LOTR: Tales of Middle-earth Bundle",
+      "group": "bundle",
+      "match": [
+        "tales of middle-earth|lord of the rings",
+        "^(?!.*gift).*bundle"
+      ]
+    }
+  ]
+}

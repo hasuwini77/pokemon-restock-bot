@@ -2710,7 +2710,7 @@
    "firstSeen": "2026-11-03T12:32:06.664Z"
   },
   "15554218721628": {
-   "title": "Pokémon TCG: Scarlet & Violet - Ruler of the Black Flame Japansk Booster",
+   "title": "Pokémon TCG: Scarlet & Violet - Ruler of the Black Flame Japansk Booster(sv3)",
    "inStock": true,
    "price": 69,
    "firstSeen": "2026-11-03T15:25:52.209Z",
@@ -2722,6 +2722,20 @@
    "price": 1895,
    "firstSeen": "2026-11-03T15:25:52.209Z",
    "lastAlert": "2026-11-03T15:25:52.209Z"
+  },
+  "15952430137692": {
+   "title": "Pokemon Sword & Shield: Star Birth Booster (Japansk)(s9)",
+   "inStock": true,
+   "price": 69,
+   "firstSeen": "2026-11-03T15:45:22.189Z",
+   "lastAlert": "2026-11-03T15:45:22.189Z"
+  },
+  "15952427680092": {
+   "title": "Pokemon Sword & Shield: Star Birth Booster Box Display (Japansk)(30st Boosters)",
+   "inStock": false,
+   "price": 2049,
+   "firstSeen": "2026-11-03T15:45:22.189Z",
+   "lastAlert": "2026-11-03T15:45:22.189Z"
   }
  },
  "Webhallen": {

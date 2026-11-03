@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: write # rearm job re-dispatches this workflow
 
 concurrency:
   group: poll
@@ -52,3 +53,17 @@ jobs:
           git config user.email "restock-bot@users.noreply.github.com"
           git commit -m "chore: update stock state [skip ci]"
           git pull --rebase -q && git push
+
+  # GitHub's cron never fires on this repo, so each run starts the next one ~10 min later.
+  # Free on public repos. The cron above stays as a restarter if the chain ever breaks;
+  # the concurrency group cancels extra pending runs, so chains never multiply.
+  rearm:
+    needs: poll
+    if: ${{ always() && !inputs.test_alert }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - run: sleep 540
+      - run: gh workflow run poll.yml --ref main -R ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ github.token }}

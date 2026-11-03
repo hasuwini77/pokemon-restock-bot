@@ -1,5 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { channels, type Channel } from "./channels.ts";
+import { loadCardmarket } from "./cardmarket.ts";
 import { findDeals, groupCeiling, isSealedListing, type DealsConfig } from "./deals.ts";
 import { diff } from "./diff.ts";
 import { sendDiscord } from "./discord.ts";
@@ -57,10 +58,12 @@ async function runChannel(ch: Channel): Promise<boolean> {
     );
     const cfg: DealsConfig = JSON.parse(cfgText);
     const minDiscount = cfg.minDiscount ?? 0;
+    const cmIndex = await loadCardmarket(t.cardmarketGame, t.cardmarketFile);
+    const cm = cmIndex && { index: cmIndex, shippingSek: cfg.cardmarketShippingSek ?? 0 };
     tState.lastCall = new Date().toISOString();
     for (const group of Object.keys(cfg.groups)) {
       const items = cfg.items.filter((i) => i.group === group);
-      const ceiling = groupCeiling(state, items);
+      const ceiling = groupCeiling(state, items, cm);
       try {
         if (ceiling == null) throw new Error(`no shop reference price for any ${group} item`);
         const res = await searchTradera(t.appId, t.appKey, {
@@ -71,7 +74,7 @@ async function runChannel(ch: Channel): Promise<boolean> {
           PageNumber: 1,
         });
         if (res.errors.length) throw new Error(res.errors.join("; "));
-        const deals = findDeals(res.items, items, state, minDiscount);
+        const deals = findDeals(res.items, items, state, minDiscount, cm);
         const fresh = deals.filter((d) => !tState.seen[d.listing.id]);
         let sent = 0;
         for (const d of fresh) {

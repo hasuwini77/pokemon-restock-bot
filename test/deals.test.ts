@@ -77,3 +77,22 @@ test("minDiscount: 15% means 849 ref needs <= 721 kr", () => {
   const ls = [listing("1", "Delta Reign Elite Trainer Box", 799), listing("2", "Delta Reign Elite Trainer Box", 720)];
   assert.deepEqual(findDeals(ls, [etb], state, 0.15).map((d) => d.listing.id), ["2"]);
 });
+
+test("cardmarket: cheapest-trend English product becomes the reference when lower than shops", async () => {
+  const { buildIndex, cmMatch } = await import("../src/cardmarket.ts");
+  const index = buildIndex(
+    { products: [
+      { idProduct: 1, name: "Delta Reign Elite Trainer Box" },
+      { idProduct: 2, name: "Delta Reign 10 Elite Trainer Box Case" },
+      { idProduct: 3, name: "Delta Reign JP Elite Trainer Box" },
+    ] },
+    { createdAt: "2026-11-03", priceGuides: [
+      { idProduct: 1, trend: 70, low: 60 }, { idProduct: 2, trend: 5, low: 5 }, { idProduct: 3, trend: 1, low: 1 },
+    ] },
+    11,
+  );
+  assert.equal(cmMatch(index, ["delta reign", "elite trainer box$"])?.id, 1); // case + JP excluded
+  const ref = reference(state, etb, { index, shippingSek: 50 });
+  assert.equal(ref?.price, 820); // 70 € * 11 + 50 kr < 849 kr Webhallen
+  assert.match(ref!.shop, /Cardmarket/);
+});

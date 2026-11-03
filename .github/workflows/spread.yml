@@ -23,3 +23,5 @@ jobs:
           TRADERA_APP_KEY: ${{ secrets.TRADERA_MTG_APP_KEY }}
           DEALS_FILE: deals-mtg.json
           STATE_FILE: state-mtg.json
+          CM_GAME: 1
+          CM_FILE: cardmarket-mtg.json

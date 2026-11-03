@@ -1,5 +1,11 @@
 # Progress
 
+## 2026-11-03 (v0.9.0)
+- Cardmarket reference via official free daily files (downloads.s3.cardmarket.com productList/priceGuide, game 1 MTG / 6 Pokémon), EUR->SEK via ECB; cached 20 h in cardmarket-*.json.
+  - Deal reference = cheapest of (Swedish shops excl. Dragon's Lair, Cardmarket trend + `cardmarketShippingSek`, default 0). Per-item `cm` regex picks the exact Cardmarket product (excludes JP/CN/cases/Pokémon Center/Omega).
+  - Verified: Aetherdrift Play Box trend 93.55 EUR = website. Pokémon spread now vs Cardmarket: 30th Booster Bundle +45% (n=54), Destined Rivals ETB +66% (n=24), 30th Mini Tin +102% (n=7).
+  - Website scraping of Cardmarket rejected (Cloudflare bot check, ToS); not attempted further.
+
 ## 2026-11-03 (v0.8.0)
 - Dragon's Lair no longer sets the Tradera "deal" reference price (prices run above market, Edwin's call); still watched for restocks.
   - Impact: Pokémon 13/21 items keep a reference (lost: 30th ETB, ex Box, tins, blister, Journey Together, Prismatic BB); MTG 23/75.

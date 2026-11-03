@@ -43,6 +43,8 @@ test("filter keeps sealed TCG, drops merch", () => {
   assert.ok(isWatched("Pokemon ME06 Delta Reign Booster Display"));
   assert.ok(isWatched("Pokémon TCG: Pitch Black Elite Trainer Box"));
   assert.ok(isWatched("Pokemon Lumiose City Mini Tin"));
+  assert.ok(isWatched("Pokemon ME6 Delta Reign Sleeved Booster Display (24)"));
+  assert.ok(!isWatched("Pokemon Elite Trainer Box Sleeves"));
   assert.ok(!isWatched("Pokemon Plush Gengar 30 cm"));
   assert.ok(!isWatched("Pokemon ME5 Pitch Black Samlarpärm 9-fickor"));
   assert.ok(!isWatched("Magic: The Gathering Booster Box"));

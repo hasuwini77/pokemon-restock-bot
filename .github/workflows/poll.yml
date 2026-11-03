@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "*/10 * * * *" # GitHub may delay scheduled runs by several minutes under load
   workflow_dispatch:
+    inputs:
+      test_alert:
+        description: Send one sample alert to Discord (no scraping)
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -22,11 +27,18 @@ jobs:
         with:
           node-version: 24
       - run: npm test
-      - run: npm run poll
+      - if: inputs.test_alert
+        run: node src/test-alert.ts
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_MENTION: ${{ vars.DISCORD_MENTION }}
+      - if: ${{ !inputs.test_alert }}
+        run: npm run poll
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           DISCORD_MENTION: ${{ vars.DISCORD_MENTION }}
       - name: Save state
+        if: ${{ !inputs.test_alert }}
         run: |
           git add state.json
           git diff --cached --quiet && exit 0

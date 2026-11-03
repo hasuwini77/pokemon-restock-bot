@@ -1,5 +1,9 @@
 # Progress
 
+## 2026-11-03 (v0.3.0)
+- Tradera sealed-only: candidate's seller description fetched from item page; must say sealed (förseglad/inplastad/oöppnad), rejects opened/picked/missing. Real 319 kr "opened + picked" ETB now rejected (verified on saved page).
+- 30th Celebration focus: dedicated Tradera group run every other call (8 items, refs from shops), ⭐ on 30th alerts.
+
 ## 2026-11-03 (v0.2.0)
 - Tradera deal alerts: 4 groups (ETB, bundle, display, premium) round-robin, 1 API call per >=19 min (<=76/day of 100).
   - Reference = lowest English retail price across the 4 shops in state.json (measured), or manual `maxPrice`.

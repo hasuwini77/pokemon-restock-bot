@@ -52,3 +52,14 @@ export async function searchTradera(appId: string, appKey: string, req: Record<s
   if (!res.ok) throw new Error(`Tradera ${res.status}: ${xml.match(/<faultstring>([^<]*)/)?.[1] ?? xml.slice(0, 200)}`);
   return parseSearch(xml);
 }
+
+/** Seller's description from the public item page (the search API doesn't return it). */
+export function parseDescription(html: string): string {
+  const raw = html.match(/"description":"((?:[^"\\]|\\.)*)"/)?.[1];
+  if (!raw) throw new Error("no description on item page");
+  return (JSON.parse(`"${raw}"`) as string)
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&");
+}

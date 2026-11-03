@@ -6,12 +6,15 @@ const LABEL = {
   deal: { text: "💸 TRADERA DEAL", color: 0xf1c40f },
 };
 
+// Products we care most about get a star.
+const PRIORITY = /30th|30[- ]?år|anniversary/i;
+
 export function toPayload(alerts: Alert[], mention = "") {
   return {
     content: mention || undefined,
     allowed_mentions: { parse: ["everyone", "roles"] },
     embeds: alerts.map(({ kind, product: p, note }) => ({
-      title: p.title.slice(0, 250),
+      title: (PRIORITY.test(p.title) ? "⭐ " : "") + p.title.slice(0, 250),
       url: p.url,
       color: LABEL[kind].color,
       author: { name: `${LABEL[kind].text} · ${p.shop}` },

@@ -18,9 +18,10 @@ export interface ProductState {
 
 export type State = Record<string, Record<string, ProductState>>; // shop -> id -> state
 
-export type AlertKind = "restock" | "new";
+export type AlertKind = "restock" | "new" | "deal";
 
 export interface Alert {
   kind: AlertKind;
   product: Product;
+  note?: string;
 }

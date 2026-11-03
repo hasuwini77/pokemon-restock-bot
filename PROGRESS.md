@@ -1,5 +1,10 @@
 # Progress
 
+## 2026-11-03 (v0.2.0)
+- Tradera deal alerts: 4 groups (ETB, bundle, display, premium) round-robin, 1 API call per >=19 min (<=76/day of 100).
+  - Reference = lowest English retail price across the 4 shops in state.json (measured), or manual `maxPrice`.
+  - Verified locally: live call with PriceMaximum shrank ETB results 640 -> 201; 1 candidate deal found; opened boxes filtered; 12 tests pass.
+
 ## 2026-11-03
 - v0.1.0: restock + new-listing alerts to Discord for Webhallen, Dragon's Lair, Alphaspel, SF Bok.
   - GitHub Actions cron every 10 min (public repo, free); state in committed `state.json`.

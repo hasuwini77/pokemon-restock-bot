@@ -1,0 +1,45 @@
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import { findDeals, reference, type DealItem } from "../src/deals.ts";
+import { parseSearch } from "../src/tradera.ts";
+import type { State } from "../src/types.ts";
+
+const s = (title: string, price: number) => ({ title, price, inStock: false, firstSeen: "" });
+const state: State = {
+  Webhallen: { a: s("Pokemon ME06 Delta Reign Elite Trainer Box", 849) },
+  "SF Bok": { b: s("Pokemon TCG: Delta Reign Elite Trainer Box", 999) },
+  "Dragon's Lair": { c: s("Delta Reign Elite Trainer Box (Japansk)", 300) },
+};
+const etb: DealItem = { name: "Delta Reign ETB", group: "etb", match: ["delta reign", "elite trainer"] };
+const listing = (id: string, title: string, buyNow: number | null) => ({
+  id, title, url: `https://www.tradera.com/item/1/${id}/x`, buyNow, nextBid: null, bids: 0, endDate: "",
+});
+
+test("reference = lowest English retail shop price, ignores Japanese", () => {
+  assert.deepEqual(reference(state, etb), { price: 849, shop: "Webhallen", manual: false });
+  assert.equal(reference(state, { ...etb, maxPrice: 700 })?.price, 700);
+  assert.equal(reference(state, { ...etb, match: ["nonexistent"] }), null);
+});
+
+test("deal only when Buy Now is strictly below reference and listing is not junk", () => {
+  const deals = findDeals([
+    listing("1", "Pokémon Elite Trainer Box – Delta Reign", 800),
+    listing("2", "Pokémon Elite Trainer Box Delta Reign", 849),
+    listing("3", "TOM Elite Trainer Box Delta Reign", 100),
+    listing("4", "Delta Reign Elite Trainer Box japansk", 200),
+    listing("5", "Delta Reign Elite Trainer Box", null),
+    listing("6", "ÖPPNAD Pokémon Elite Trainer Box Delta Reign", 499),
+  ], [etb], state);
+  assert.deepEqual(deals.map((d) => d.listing.id), ["1"]);
+});
+
+test("tradera SOAP result parses", () => {
+  const xml = `<soap:Envelope><soap:Body><SearchAdvancedResponse><SearchAdvancedResult>
+    <TotalNumberOfItems>640</TotalNumberOfItems>
+    <Items><Id>42</Id><ShortDescription>Pokémon ETB &amp; more</ShortDescription><BuyItNowPrice>1552</BuyItNowPrice>
+    <NextBid>1552</NextBid><EndDate>2027-01-01T12:43:00</EndDate><ItemUrl>https://www.tradera.com/item/1/42/x</ItemUrl><BidCount>0</BidCount></Items>
+    </SearchAdvancedResult></SearchAdvancedResponse></soap:Body></soap:Envelope>`;
+  const r = parseSearch(xml);
+  assert.equal(r.total, 640);
+  assert.deepEqual([r.items[0].id, r.items[0].title, r.items[0].buyNow], ["42", "Pokémon ETB & more", 1552]);
+});

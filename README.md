@@ -13,11 +13,18 @@ Polls Swedish Pokémon TCG shops every ~10 min (free GitHub Actions) and pings D
 Only sealed product is tracked (booster, display, ETB, bundle, UPC, collection, tin, blister…), see `src/filter.ts`.
 The first run per shop records a silent baseline. Each product alerts at most once per 6 h.
 
+## Tradera deals
+Every ~20 min (free API: 100 calls/day) one product group from `deals.json` is searched on Tradera, Buy Now only,
+capped at the group's highest shop price. A listing alerts when its Buy Now price is **below the lowest price for the same
+product in the shops above** (measured from the latest scrape), or below your own `maxPrice` if you set one.
+Opened/empty/Japanese/Chinese/used listings are skipped. Edit `deals.json` to add products.
+
 ## Setup
 1. Discord: Server settings → Integrations → Webhooks → New webhook → copy URL.
 2. Repo → Settings → Secrets and variables → Actions → secret `DISCORD_WEBHOOK_URL`.
-3. Optional variable `DISCORD_MENTION` = `@everyone` (or `<@&ROLE_ID>`).
-4. Actions → poll → Run workflow (first run = baseline, no alerts).
+3. Tradera: register an app at api.tradera.com → secrets `TRADERA_APP_ID`, `TRADERA_APP_KEY` (App Key, not Public Key).
+4. Optional variable `DISCORD_MENTION` = `@everyone` (or `<@&ROLE_ID>`).
+5. Actions → poll → Run workflow (first run = baseline, no alerts).
 
 ## Local
 ```

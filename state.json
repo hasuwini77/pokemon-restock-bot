@@ -131,8 +131,9 @@
   "15554385871196": {
    "title": "Pokémon TCG - Black Bolt Booster Japansk",
    "inStock": true,
-   "price": 99,
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "price": 79,
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-03T17:22:59.646Z"
   },
   "15554439119196": {
    "title": "Pokémon TCG - Inferno X Booster Japansk",
@@ -956,10 +957,11 @@
    "firstSeen": "2026-11-03T12:32:06.664Z"
   },
   "15654885425500": {
-   "title": "Pokemon Black Bolt Booster Box Display (Japansk)",
-   "inStock": false,
-   "price": 1690,
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "title": "Pokemon Black Bolt Booster Box Display (Japansk)(20st Boosters)",
+   "inStock": true,
+   "price": 2249,
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-03T17:22:59.646Z"
   },
   "15554436006236": {
    "title": "Pokémon TCG - Mega Evolution Booster (Max 6 per kund)",

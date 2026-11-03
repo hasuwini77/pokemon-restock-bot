@@ -179,8 +179,9 @@
   "15554359755100": {
    "title": "Pokémon TCG - Glory of Team Rocket Booster Japansk(SV10)",
    "inStock": true,
-   "price": 89,
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "price": 75,
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-03T16:05:00.822Z"
   },
   "15631290040668": {
    "title": "Pokémon TCG - 151C 4.0 Booster (Kinesisk) 5 kort",
@@ -838,9 +839,10 @@
   },
   "15678946869596": {
    "title": "Pokemon Abyss Eye Booster (M5)(Japansk)",
-   "inStock": false,
+   "inStock": true,
    "price": 40,
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-03T16:05:00.822Z"
   },
   "15631282602332": {
    "title": "Pokémon TCG: Mega Evolution - Chaos Rising Booster (Max 24 per kund)",
@@ -922,9 +924,10 @@
   },
   "15726726185308": {
    "title": "Pokemon Abyss Eye Booster Box (M5)(Japansk)",
-   "inStock": false,
-   "price": 1195,
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "inStock": true,
+   "price": 1095,
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-03T16:05:00.822Z"
   },
   "15685435490652": {
    "title": "Pokémon 30th Anniversary Celebration First Partner Vol. 2 Box (Kinesisk)",

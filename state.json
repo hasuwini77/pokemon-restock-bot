@@ -2926,5 +2926,61 @@
    "price": 499,
    "firstSeen": "2026-11-03T12:32:14.509Z"
   }
+ },
+ "Alphaspel": {
+  "349392": {
+   "title": "Pokemon TCG: Mega Evolution - Chaos Rising Booster Pack",
+   "inStock": false,
+   "price": 79,
+   "firstSeen": "2026-11-03T13:18:56.810Z"
+  },
+  "353242": {
+   "title": "Pokemon TCG: Lumiose City Mini Tin",
+   "inStock": true,
+   "price": 189,
+   "firstSeen": "2026-11-03T13:18:56.810Z"
+  },
+  "353245": {
+   "title": "Pokemon TCG: Mega Greninja ex Premium Collection",
+   "inStock": false,
+   "price": 699,
+   "firstSeen": "2026-11-03T13:18:56.810Z"
+  },
+  "353246": {
+   "title": "Pokémon TCG: Mega Evolution - Pitch Black Elite Trainer Box",
+   "inStock": true,
+   "price": 899,
+   "firstSeen": "2026-11-03T13:18:56.810Z"
+  },
+  "353250": {
+   "title": "Pokemon TCG: Mega Evolution - Pitch Black Checklane Blister",
+   "inStock": true,
+   "price": 99,
+   "firstSeen": "2026-11-03T13:18:56.810Z"
+  },
+  "353256": {
+   "title": "Pokemon TCG: Mega Evolution - Pitch Black Booster Bundle (6)",
+   "inStock": true,
+   "price": 549,
+   "firstSeen": "2026-11-03T13:18:56.810Z"
+  },
+  "353259": {
+   "title": "Pokemon TCG: Mega Evolution - Pitch Black Booster Pack",
+   "inStock": false,
+   "price": 79,
+   "firstSeen": "2026-11-03T13:18:56.810Z"
+  },
+  "354102": {
+   "title": "Pokemon TCG: Mega Evolution - Pitch Black 2-pack Blister (Zarude)",
+   "inStock": false,
+   "price": 189,
+   "firstSeen": "2026-11-03T13:18:56.810Z"
+  },
+  "360121": {
+   "title": "Pokemon TCG: Enhanced 2-Pack Blister (Gengar)",
+   "inStock": true,
+   "price": 229,
+   "firstSeen": "2026-11-03T13:18:56.810Z"
+  }
  }
 }

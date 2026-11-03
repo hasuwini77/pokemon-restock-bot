@@ -47,20 +47,18 @@ async function runChannel(ch: Channel): Promise<boolean> {
     }
   }
 
-  // Tradera: free API allows 100 calls / 24 h per app, so one group query per >=19 min (max ~76/day).
+  // Tradera: app dashboard shows 10,000 SearchAdvanced calls / 24 h, so every group is searched every run
+  // (pokemon 5 + mtg 3 calls per run, ~1,150/day total).
   const t = ch.tradera;
   const cfgText = t && (await readFile(t.dealsFile, "utf8").catch(() => null));
   if (t && cfgText && t.appId && t.appKey && failures < shops.length) {
-    const tState: { lastCall?: string; next: number; seen: Record<string, string> } = JSON.parse(
-      await readFile(t.stateFile, "utf8").catch(() => '{"next":0,"seen":{}}'),
+    const tState: { lastCall?: string; seen: Record<string, string> } = JSON.parse(
+      await readFile(t.stateFile, "utf8").catch(() => '{"seen":{}}'),
     );
-    const due = !tState.lastCall || Date.now() - Date.parse(tState.lastCall) >= 19 * 60_000;
-    if (due) {
-      const cfg: DealsConfig = JSON.parse(cfgText);
-      const groups = cfg.schedule ?? Object.keys(cfg.groups);
-      const group = groups[tState.next % groups.length];
-      tState.next = (tState.next + 1) % groups.length;
-      tState.lastCall = new Date().toISOString();
+    const cfg: DealsConfig = JSON.parse(cfgText);
+    const minDiscount = cfg.minDiscount ?? 0;
+    tState.lastCall = new Date().toISOString();
+    for (const group of Object.keys(cfg.groups)) {
       const items = cfg.items.filter((i) => i.group === group);
       const ceiling = groupCeiling(state, items);
       try {
@@ -73,7 +71,7 @@ async function runChannel(ch: Channel): Promise<boolean> {
           PageNumber: 1,
         });
         if (res.errors.length) throw new Error(res.errors.join("; "));
-        const deals = findDeals(res.items, items, state);
+        const deals = findDeals(res.items, items, state, minDiscount);
         const fresh = deals.filter((d) => !tState.seen[d.listing.id]);
         let sent = 0;
         for (const d of fresh) {
@@ -90,21 +88,22 @@ async function runChannel(ch: Channel): Promise<boolean> {
             continue;
           }
           sent++;
+          const off = Math.round((1 - d.listing.buyNow! / d.ref.price) * 100);
           alerts.push({
             kind: "deal",
             product: { shop: "Tradera", id: d.listing.id, title: d.listing.title, url: d.listing.url, price: d.listing.buyNow, inStock: true, image: d.listing.image },
-            note: `${d.item.name} · ${d.ref.manual ? "your max" : `lowest shop price ${d.ref.price} kr at ${d.ref.shop}`}`,
+            note: `${d.item.name} · -${off}% vs ${d.ref.manual ? "your max" : `lowest shop price ${d.ref.price} kr at ${d.ref.shop}`}`,
           });
         }
-        console.log(`[${ch.id}] Tradera [${group}] <= ${ceiling} kr: ${res.items.length} of ${res.total} listings, ${deals.length} below ref, ${fresh.length} unseen, ${sent} alerts`);
+        console.log(`[${ch.id}] Tradera [${group}] <= ${ceiling} kr: ${res.items.length} of ${res.total} listings, ${deals.length} deals, ${fresh.length} unseen, ${sent} alerts`);
       } catch (e) {
-        console.error(`[${ch.id}] Tradera: FAILED ${e}`);
+        console.error(`[${ch.id}] Tradera [${group}]: FAILED ${e}`);
       }
-      // Keep the seen-list bounded (listings older than 30 days can't re-alert meaningfully).
-      const cutoff = Date.now() - 30 * 86_400_000;
-      for (const [id, ts] of Object.entries(tState.seen)) if (Date.parse(ts) < cutoff) delete tState.seen[id];
-      await writeFile(t.stateFile, JSON.stringify(tState, null, 1) + "\n");
     }
+    // Keep the seen-list bounded (listings older than 30 days can't re-alert meaningfully).
+    const cutoff = Date.now() - 30 * 86_400_000;
+    for (const [id, ts] of Object.entries(tState.seen)) if (Date.parse(ts) < cutoff) delete tState.seen[id];
+    await writeFile(t.stateFile, JSON.stringify(tState, null, 1) + "\n");
   }
 
   for (const a of alerts) console.log(`  [${a.kind}] ${a.product.shop} · ${a.product.title} · ${a.product.price} kr`);

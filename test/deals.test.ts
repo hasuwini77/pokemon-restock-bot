@@ -29,6 +29,7 @@ test("deal only when Buy Now is strictly below reference and listing is not junk
     listing("4", "Delta Reign Elite Trainer Box japansk", 200),
     listing("5", "Delta Reign Elite Trainer Box", null),
     listing("6", "ÖPPNAD Pokémon Elite Trainer Box Delta Reign", 499),
+    listing("7", "Delta Reign Elite Trainer Box - Spanska", 499),
   ], [etb], state);
   assert.deepEqual(deals.map((d) => d.listing.id), ["1"]);
 });
@@ -68,4 +69,9 @@ test("spread: median ask vs lowest shop price", async () => {
     listing("4", "Delta Reign Elite Trainer Box", 1600),
   ], [etb], state);
   assert.deepEqual(rows[0], { name: "Delta Reign ETB", shop: 849, shopName: "Webhallen", n: 3, low: 1200, median: 1400, pct: 65 });
+});
+
+test("minDiscount: 15% means 849 ref needs <= 721 kr", () => {
+  const ls = [listing("1", "Delta Reign Elite Trainer Box", 799), listing("2", "Delta Reign Elite Trainer Box", 720)];
+  assert.deepEqual(findDeals(ls, [etb], state, 0.15).map((d) => d.listing.id), ["2"]);
 });

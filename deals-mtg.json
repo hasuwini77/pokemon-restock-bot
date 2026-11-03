@@ -1,16 +1,11 @@
 {
-  "_help": "MTG: alerts when a sealed Tradera Buy Now is below the lowest shop price for the same product (state-mtg.json). Items without any shop price are skipped. `schedule`: collector runs every other call.",
+  "_help": "MTG: alerts when a sealed Tradera Buy Now is below the lowest shop price for the same product (state-mtg.json). Items without any shop price are skipped. `minDiscount`: Buy Now must be at least this far below the reference (15%).",
+  "minDiscount": 0.15,
   "groups": {
     "collector": "magic the gathering collector booster",
     "playbox": "magic the gathering play booster display",
     "bundle": "magic the gathering bundle"
   },
-  "schedule": [
-    "collector",
-    "playbox",
-    "collector",
-    "bundle"
-  ],
   "items": [
     {
       "name": "Final Fantasy Collector Booster Display",

@@ -1,5 +1,10 @@
 # Progress
 
+## 2026-11-03 (v0.7.0)
+- Tradera limit is 10,000 SearchAdvanced/day per app (Edwin's app dashboard), not 100 as the docs say. Every group now searched every run (8 calls/run).
+- `minDiscount` per deals file: Pokémon 10%, MTG 15% below lowest shop price. Non-English (Spanish/German/French/...) listings skipped.
+- Live dry run: MTG Aetherdrift Play Booster Box 1249 vs 1745 shop (-28%), TMNT Play Box 1499 vs 1995 (-25%); Pokémon 30th: 15 under-price listings, all rejected as not clearly sealed.
+
 ## 2026-11-03 (v0.6.0)
 - MTG Tradera deals on its own Tradera app: `deals-mtg.json` (15 sets x collector display/pack, play display, gift bundle, bundle; 58/75 have a shop price), collector queried every other call.
 - MTG spread report added to weekly workflow. First run: Final Fantasy is the only clear premium (play display +236% n=2, collector pack +184% n=2); many MTG items ask BELOW Swedish shop prices on Tradera (thin samples).

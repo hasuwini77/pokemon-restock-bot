@@ -13,7 +13,7 @@ export interface Channel {
   webhook?: string;
   mention?: string;
   priority: RegExp; // titles that get a ⭐
-  tradera?: { appId?: string; appKey?: string; dealsFile: string; stateFile: string };
+  tradera?: { appId?: string; appKey?: string; dealsFile: string; stateFile: string; cardmarketGame: number; cardmarketFile: string };
 }
 
 const env = process.env;
@@ -37,6 +37,8 @@ export const channels: Channel[] = [
       appKey: env.TRADERA_APP_KEY,
       dealsFile: "deals.json",
       stateFile: env.TRADERA_STATE_FILE ?? "tradera-state.json",
+      cardmarketGame: 6,
+      cardmarketFile: "cardmarket-pokemon.json",
     },
   },
   {
@@ -58,6 +60,8 @@ export const channels: Channel[] = [
       appKey: env.TRADERA_MTG_APP_KEY,
       dealsFile: "deals-mtg.json",
       stateFile: env.TRADERA_MTG_STATE_FILE ?? "tradera-state-mtg.json",
+      cardmarketGame: 1,
+      cardmarketFile: "cardmarket-mtg.json",
     },
   },
 ];

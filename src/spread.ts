@@ -1,7 +1,8 @@
 // Spread report: for each watched item, sealed-looking Tradera Buy Now ASKING prices vs the lowest shop price.
 // Asking prices, not sold prices. One Tradera call per group.
 import { readFile } from "node:fs/promises";
-import { JUNK, matches, reference, type DealItem, type DealsConfig } from "./deals.ts";
+import { loadCardmarket } from "./cardmarket.ts";
+import { JUNK, matches, reference, type CmRef, type DealItem, type DealsConfig } from "./deals.ts";
 import { searchTradera, type TraderaItem } from "./tradera.ts";
 import type { State } from "./types.ts";
 
@@ -12,12 +13,12 @@ const median = (xs: number[]) => {
   return s.length ? (s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2) : null;
 };
 
-export function spreadRows(listings: TraderaItem[], items: DealItem[], state: State): SpreadRow[] {
+export function spreadRows(listings: TraderaItem[], items: DealItem[], state: State, cm?: CmRef | null): SpreadRow[] {
   return items.map((item) => {
     const asks = listings
       .filter((l) => l.buyNow != null && !JUNK.test(l.title) && matches(l.title, item))
       .map((l) => l.buyNow as number);
-    const ref = reference(state, { ...item, maxPrice: undefined });
+    const ref = reference(state, { ...item, maxPrice: undefined }, cm);
     const med = median(asks);
     return {
       name: item.name,
@@ -36,7 +37,7 @@ export function formatRows(rows: SpreadRow[]): string {
   const lines = sorted.map((r) =>
     `${(r.pct == null ? "  n/a" : `${r.pct > 0 ? "+" : ""}${r.pct}%`).padStart(6)}  ${String(r.shop ?? "-").padStart(5)} → ${String(r.median ?? "-").padStart(5)} kr  n=${String(r.n).padStart(2)}  ${r.name}`,
   );
-  return ["  gap   shop → Tradera median ask", ...lines].join("\n");
+  return ["  gap   ref → Tradera median ask (ref = cheapest of Swedish shops excl. Dragon's Lair and Cardmarket trend)", ...lines].join("\n");
 }
 
 if (import.meta.main) {
@@ -44,10 +45,12 @@ if (import.meta.main) {
   if (!appId || !appKey) throw new Error("TRADERA_APP_ID / TRADERA_APP_KEY not set");
   const cfg: DealsConfig = JSON.parse(await readFile(process.env.DEALS_FILE ?? "deals.json", "utf8"));
   const state: State = JSON.parse(await readFile(process.env.STATE_FILE ?? "state.json", "utf8"));
+  const cmIndex = await loadCardmarket(Number(process.env.CM_GAME ?? 6), process.env.CM_FILE ?? "cardmarket-pokemon.json");
+  const cm = cmIndex && { index: cmIndex, shippingSek: cfg.cardmarketShippingSek ?? 0 };
   const rows: SpreadRow[] = [];
   for (const [group, words] of Object.entries(cfg.groups)) {
     const res = await searchTradera(appId, appKey, { SearchWords: words, OnlyAuctionsWithBuyNow: true, ItemsPerPage: 240, PageNumber: 1 });
-    rows.push(...spreadRows(res.items, cfg.items.filter((i) => i.group === group), state));
+    rows.push(...spreadRows(res.items, cfg.items.filter((i) => i.group === group), state, cm));
     console.log(`[${group}] ${res.items.length} of ${res.total} Buy Now listings`);
   }
   const table = formatRows(rows);

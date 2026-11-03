@@ -1,8 +1,11 @@
+import { cmMatch, type CmIndex } from "./cardmarket.ts";
 import type { TraderaItem } from "./tradera.ts";
 import type { State } from "./types.ts";
 
-export interface DealItem { name: string; group: string; match: string[]; maxPrice?: number }
-export interface DealsConfig { groups: Record<string, string>; minDiscount?: number; items: DealItem[] }
+export interface DealItem { name: string; group: string; match: string[]; cm?: string[]; maxPrice?: number }
+export interface DealsConfig { groups: Record<string, string>; minDiscount?: number; cardmarketShippingSek?: number; items: DealItem[] }
+/** Cardmarket data + shipping estimate used as an extra price reference. */
+export interface CmRef { index: CmIndex; shippingSek: number }
 export interface Reference { price: number; shop: string; manual: boolean }
 export interface Deal { item: DealItem; listing: TraderaItem; ref: Reference }
 
@@ -26,7 +29,7 @@ export const matches = (title: string, item: DealItem) => item.match.every((m) =
 const NOT_A_REFERENCE = new Set(["Dragon's Lair"]);
 
 /** Lowest listed shop price for the item, measured from the latest scrape. */
-export function reference(state: State, item: DealItem): Reference | null {
+export function reference(state: State, item: DealItem, cm?: CmRef | null): Reference | null {
   if (item.maxPrice) return { price: item.maxPrice, shop: "your max price", manual: true };
   let best: Reference | null = null;
   for (const [shop, products] of Object.entries(state)) {
@@ -36,23 +39,29 @@ export function reference(state: State, item: DealItem): Reference | null {
       if (!best || p.price < best.price) best = { price: p.price, shop, manual: false };
     }
   }
+  if (cm) {
+    const p = cmMatch(cm.index, item.cm ?? item.match);
+    const price = p ? Math.round(p.trend * cm.index.eurSek + cm.shippingSek) : null;
+    if (p && price && (!best || price < best.price))
+      best = { price, shop: `Cardmarket trend${cm.shippingSek ? " + shipping" : ""} (${p.trend.toFixed(2)} €)`, manual: false };
+  }
   return best;
 }
 
 /** Highest reference in a group: sent to Tradera as PriceMaximum so results are only candidates. */
-export function groupCeiling(state: State, items: DealItem[]): number | null {
-  const refs = items.map((i) => reference(state, i)?.price).filter((p): p is number => p != null);
+export function groupCeiling(state: State, items: DealItem[], cm?: CmRef | null): number | null {
+  const refs = items.map((i) => reference(state, i, cm)?.price).filter((p): p is number => p != null);
   return refs.length ? Math.max(...refs) - 1 : null;
 }
 
 /** Buy Now listings at least `minDiscount` (0.15 = 15%) below the reference for any item in the group. */
-export function findDeals(listings: TraderaItem[], items: DealItem[], state: State, minDiscount = 0): Deal[] {
+export function findDeals(listings: TraderaItem[], items: DealItem[], state: State, minDiscount = 0, cm?: CmRef | null): Deal[] {
   const deals: Deal[] = [];
   for (const listing of listings) {
     if (listing.buyNow == null || JUNK.test(listing.title)) continue;
     for (const item of items) {
       if (!matches(listing.title, item)) continue;
-      const ref = reference(state, item);
+      const ref = reference(state, item, cm);
       if (ref && listing.buyNow < ref.price * (1 - minDiscount)) deals.push({ item, listing, ref });
       if (ref) break; // first item with a known shop price wins
     }

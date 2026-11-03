@@ -14,6 +14,10 @@
         "final fantasy",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "final fantasy",
+        "collector booster box$"
       ]
     },
     {
@@ -22,6 +26,10 @@
       "match": [
         "final fantasy",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "final fantasy",
+        "collector booster$"
       ]
     },
     {
@@ -30,6 +38,10 @@
       "match": [
         "final fantasy",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "final fantasy",
+        "play booster box$"
       ]
     },
     {
@@ -38,6 +50,10 @@
       "match": [
         "final fantasy",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "final fantasy",
+        "gift edition$"
       ]
     },
     {
@@ -46,6 +62,10 @@
       "match": [
         "final fantasy",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "final fantasy",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -55,6 +75,10 @@
         "avatar|last airbender",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "avatar|last airbender",
+        "collector booster box$"
       ]
     },
     {
@@ -63,6 +87,10 @@
       "match": [
         "avatar|last airbender",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "avatar|last airbender",
+        "collector booster$"
       ]
     },
     {
@@ -71,6 +99,10 @@
       "match": [
         "avatar|last airbender",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "avatar|last airbender",
+        "play booster box$"
       ]
     },
     {
@@ -79,6 +111,10 @@
       "match": [
         "avatar|last airbender",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "avatar|last airbender",
+        "gift edition$"
       ]
     },
     {
@@ -87,6 +123,10 @@
       "match": [
         "avatar|last airbender",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "avatar|last airbender",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -96,6 +136,10 @@
         "marvel super heroes",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "marvel super heroes",
+        "collector booster box$"
       ]
     },
     {
@@ -104,6 +148,10 @@
       "match": [
         "marvel super heroes",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "marvel super heroes",
+        "collector booster$"
       ]
     },
     {
@@ -112,6 +160,10 @@
       "match": [
         "marvel super heroes",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "marvel super heroes",
+        "play booster box$"
       ]
     },
     {
@@ -120,6 +172,10 @@
       "match": [
         "marvel super heroes",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "marvel super heroes",
+        "gift edition$"
       ]
     },
     {
@@ -128,6 +184,10 @@
       "match": [
         "marvel super heroes",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "marvel super heroes",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -137,6 +197,10 @@
         "spider-?man",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "spider-?man",
+        "collector booster box$"
       ]
     },
     {
@@ -145,6 +209,10 @@
       "match": [
         "spider-?man",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "spider-?man",
+        "collector booster$"
       ]
     },
     {
@@ -153,6 +221,10 @@
       "match": [
         "spider-?man",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "spider-?man",
+        "play booster box$"
       ]
     },
     {
@@ -161,6 +233,10 @@
       "match": [
         "spider-?man",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "spider-?man",
+        "gift edition$"
       ]
     },
     {
@@ -169,6 +245,10 @@
       "match": [
         "spider-?man",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "spider-?man",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -178,6 +258,10 @@
         "teenage mutant|tmnt|ninja turtles",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "teenage mutant|tmnt|ninja turtles",
+        "collector booster box$"
       ]
     },
     {
@@ -186,6 +270,10 @@
       "match": [
         "teenage mutant|tmnt|ninja turtles",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "teenage mutant|tmnt|ninja turtles",
+        "collector booster$"
       ]
     },
     {
@@ -194,6 +282,10 @@
       "match": [
         "teenage mutant|tmnt|ninja turtles",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "teenage mutant|tmnt|ninja turtles",
+        "play booster box$"
       ]
     },
     {
@@ -202,6 +294,10 @@
       "match": [
         "teenage mutant|tmnt|ninja turtles",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "teenage mutant|tmnt|ninja turtles",
+        "gift edition$"
       ]
     },
     {
@@ -210,6 +306,10 @@
       "match": [
         "teenage mutant|tmnt|ninja turtles",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "teenage mutant|tmnt|ninja turtles",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -219,6 +319,10 @@
         "hobbit",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "hobbit",
+        "collector booster box$"
       ]
     },
     {
@@ -227,6 +331,10 @@
       "match": [
         "hobbit",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "hobbit",
+        "collector booster$"
       ]
     },
     {
@@ -235,6 +343,10 @@
       "match": [
         "hobbit",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "hobbit",
+        "play booster box$"
       ]
     },
     {
@@ -243,6 +355,10 @@
       "match": [
         "hobbit",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "hobbit",
+        "gift edition$"
       ]
     },
     {
@@ -251,6 +367,10 @@
       "match": [
         "hobbit",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "hobbit",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -260,6 +380,10 @@
         "edge of eternities",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "edge of eternities",
+        "collector booster box$"
       ]
     },
     {
@@ -268,6 +392,10 @@
       "match": [
         "edge of eternities",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "edge of eternities",
+        "collector booster$"
       ]
     },
     {
@@ -276,6 +404,10 @@
       "match": [
         "edge of eternities",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "edge of eternities",
+        "play booster box$"
       ]
     },
     {
@@ -284,6 +416,10 @@
       "match": [
         "edge of eternities",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "edge of eternities",
+        "gift edition$"
       ]
     },
     {
@@ -292,6 +428,10 @@
       "match": [
         "edge of eternities",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "edge of eternities",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -301,6 +441,10 @@
         "lorwyn eclipsed",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "lorwyn eclipsed",
+        "collector booster box$"
       ]
     },
     {
@@ -309,6 +453,10 @@
       "match": [
         "lorwyn eclipsed",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "lorwyn eclipsed",
+        "collector booster$"
       ]
     },
     {
@@ -317,6 +465,10 @@
       "match": [
         "lorwyn eclipsed",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "lorwyn eclipsed",
+        "play booster box$"
       ]
     },
     {
@@ -325,6 +477,10 @@
       "match": [
         "lorwyn eclipsed",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "lorwyn eclipsed",
+        "gift edition$"
       ]
     },
     {
@@ -333,6 +489,10 @@
       "match": [
         "lorwyn eclipsed",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "lorwyn eclipsed",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -342,6 +502,10 @@
         "reality fracture",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "reality fracture",
+        "collector booster box$"
       ]
     },
     {
@@ -350,6 +514,10 @@
       "match": [
         "reality fracture",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "reality fracture",
+        "collector booster$"
       ]
     },
     {
@@ -358,6 +526,10 @@
       "match": [
         "reality fracture",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "reality fracture",
+        "play booster box$"
       ]
     },
     {
@@ -366,6 +538,10 @@
       "match": [
         "reality fracture",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "reality fracture",
+        "gift edition$"
       ]
     },
     {
@@ -374,6 +550,10 @@
       "match": [
         "reality fracture",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "reality fracture",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -383,6 +563,10 @@
         "aetherdrift",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "aetherdrift",
+        "collector booster box$"
       ]
     },
     {
@@ -391,6 +575,10 @@
       "match": [
         "aetherdrift",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "aetherdrift",
+        "collector booster$"
       ]
     },
     {
@@ -399,6 +587,10 @@
       "match": [
         "aetherdrift",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "aetherdrift",
+        "play booster box$"
       ]
     },
     {
@@ -407,6 +599,10 @@
       "match": [
         "aetherdrift",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "aetherdrift",
+        "gift edition$"
       ]
     },
     {
@@ -415,6 +611,10 @@
       "match": [
         "aetherdrift",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "aetherdrift",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -424,6 +624,10 @@
         "duskmourn",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "duskmourn",
+        "collector booster box$"
       ]
     },
     {
@@ -432,6 +636,10 @@
       "match": [
         "duskmourn",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "duskmourn",
+        "collector booster$"
       ]
     },
     {
@@ -440,6 +648,10 @@
       "match": [
         "duskmourn",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "duskmourn",
+        "play booster box$"
       ]
     },
     {
@@ -448,6 +660,10 @@
       "match": [
         "duskmourn",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "duskmourn",
+        "gift edition$"
       ]
     },
     {
@@ -456,6 +672,10 @@
       "match": [
         "duskmourn",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "duskmourn",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -465,6 +685,10 @@
         "foundations",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "foundations",
+        "collector booster box$"
       ]
     },
     {
@@ -473,6 +697,10 @@
       "match": [
         "foundations",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "foundations",
+        "collector booster$"
       ]
     },
     {
@@ -481,6 +709,10 @@
       "match": [
         "foundations",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "foundations",
+        "play booster box$"
       ]
     },
     {
@@ -489,6 +721,10 @@
       "match": [
         "foundations",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "foundations",
+        "gift edition$"
       ]
     },
     {
@@ -497,6 +733,10 @@
       "match": [
         "foundations",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "foundations",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -506,6 +746,10 @@
         "innistrad remastered",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "innistrad remastered",
+        "collector booster box$"
       ]
     },
     {
@@ -514,6 +758,10 @@
       "match": [
         "innistrad remastered",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "innistrad remastered",
+        "collector booster$"
       ]
     },
     {
@@ -522,6 +770,10 @@
       "match": [
         "innistrad remastered",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "innistrad remastered",
+        "play booster box$"
       ]
     },
     {
@@ -530,6 +782,10 @@
       "match": [
         "innistrad remastered",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "innistrad remastered",
+        "gift edition$"
       ]
     },
     {
@@ -538,6 +794,10 @@
       "match": [
         "innistrad remastered",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "innistrad remastered",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -547,6 +807,10 @@
         "star trek",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "star trek",
+        "collector booster box$"
       ]
     },
     {
@@ -555,6 +819,10 @@
       "match": [
         "star trek",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "star trek",
+        "collector booster$"
       ]
     },
     {
@@ -563,6 +831,10 @@
       "match": [
         "star trek",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "star trek",
+        "play booster box$"
       ]
     },
     {
@@ -571,6 +843,10 @@
       "match": [
         "star trek",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "star trek",
+        "gift edition$"
       ]
     },
     {
@@ -579,6 +855,10 @@
       "match": [
         "star trek",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "star trek",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     },
     {
@@ -588,6 +868,10 @@
         "tales of middle-earth|lord of the rings",
         "collector'?s? boost",
         "display|box|\\(12\\)"
+      ],
+      "cm": [
+        "tales of middle-earth|lord of the rings",
+        "collector booster box$"
       ]
     },
     {
@@ -596,6 +880,10 @@
       "match": [
         "tales of middle-earth|lord of the rings",
         "^(?!.*(display|box|\\(12\\))).*collector'?s? boost"
+      ],
+      "cm": [
+        "tales of middle-earth|lord of the rings",
+        "collector booster$"
       ]
     },
     {
@@ -604,6 +892,10 @@
       "match": [
         "tales of middle-earth|lord of the rings",
         "play (booster )?(display|box)"
+      ],
+      "cm": [
+        "tales of middle-earth|lord of the rings",
+        "play booster box$"
       ]
     },
     {
@@ -612,6 +904,10 @@
       "match": [
         "tales of middle-earth|lord of the rings",
         "gift bundle|gift edition"
+      ],
+      "cm": [
+        "tales of middle-earth|lord of the rings",
+        "gift edition$"
       ]
     },
     {
@@ -620,7 +916,12 @@
       "match": [
         "tales of middle-earth|lord of the rings",
         "^(?!.*gift).*bundle"
+      ],
+      "cm": [
+        "tales of middle-earth|lord of the rings",
+        "^(?!.*nightmare).*fat pack bundle$"
       ]
     }
-  ]
+  ],
+  "cardmarketShippingSek": 0
 }

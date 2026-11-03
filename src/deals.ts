@@ -7,7 +7,7 @@ export interface Reference { price: number; shop: string; manual: boolean }
 export interface Deal { item: DealItem; listing: TraderaItem; ref: Reference }
 
 // Listings that look like the product but aren't the sealed English product.
-const JUNK =
+export const JUNK =
   /\btom(ma)?\b|empty|endast|\bonly\b|\butan\b|sleeves?|\bpins?\b|proxy|fake|kopia|replika|japansk|japanese|\bjp\b|kinesisk|chinese|korean|koreansk|\blösa?\b|single|digital|\bkod\b|\bcode\b|sleeved|(?<!o)öppna[dt]?|(?<!o)öppen|opened|begagnad|\bused\b|skadad|damaged|plocka[dt]|uttagna?|saknas|ej komplett|inte komplett|ofullständig|missing/i;
 // The seller must say it's sealed (title or description), otherwise we skip it.
 const SEALED = /förseglad|fabriksförseglad|inplastad|i plast|oöppnad|oöppnat|obruten|sealed|shrink ?wrap/i;
@@ -20,7 +20,7 @@ export function isSealedListing(title: string, description: string): boolean {
 // Shop titles to ignore as a price reference (different product than the English retail box).
 const NOT_RETAIL = /japansk|japanese|kinesisk|chinese|korean|sleeved|acrylic|akryl|utan plast/i;
 
-const matches = (title: string, item: DealItem) => item.match.every((m) => new RegExp(m, "i").test(title));
+export const matches = (title: string, item: DealItem) => item.match.every((m) => new RegExp(m, "i").test(title));
 
 /** Lowest listed shop price for the item, measured from the latest scrape. */
 export function reference(state: State, item: DealItem): Reference | null {

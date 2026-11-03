@@ -2766,6 +2766,13 @@
    "price": 3499,
    "firstSeen": "2026-11-03T12:32:14.509Z"
   },
+  "397889": {
+   "title": "Pokemon ME2.5 Ascended Heroes Booster Bundle",
+   "inStock": true,
+   "price": 799,
+   "firstSeen": "2026-11-03T14:37:24.138Z",
+   "lastAlert": "2026-11-03T14:37:24.138Z"
+  },
   "398333": {
    "title": "Pokemon ME4 Chaos Rising Checklane Booster",
    "inStock": true,
@@ -2792,9 +2799,10 @@
   },
   "398353": {
    "title": "Pokemon ME4 Chaos Rising Booster Bundle",
-   "inStock": false,
+   "inStock": true,
    "price": 499,
-   "firstSeen": "2026-11-03T12:32:14.509Z"
+   "firstSeen": "2026-11-03T12:32:14.509Z",
+   "lastAlert": "2026-11-03T14:37:24.138Z"
   },
   "399534": {
    "title": "Pokemon Tin Summer EX Mega Clefable",

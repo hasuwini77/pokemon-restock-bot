@@ -1,5 +1,11 @@
 # Progress
 
+## 2026-11-03 (v0.11.0 / v0.11.1)
+- Tight budget, high EV: `maxBuy: 2500` (caps Tradera PriceMaximum, deal alerts, spread report) and `minDiscount: 0.25` for Pokémon + MTG.
+  - MTG collector ceiling 16,994 kr was real (LOTR Collector Box trend 1,552 EUR), not a mismatch.
+  - Verified live (run on ff0954b): every group searched at <= 2,500 kr or lower, 22/22 tests, poll + rearm success.
+  - Gap: groups with >240 listings (30th: 3,787; MTG collector 1,512; playbox 1,694) only read page 1.
+
 ## 2026-11-03 (v0.10.0)
 - Spread report is now a short clickable flip list: only gaps >= 20% with 2+ Tradera ads, top 10. Each line links to where to buy (shop page or Cardmarket search) and a Tradera search.
   - Verified: 21/21 tests; spread run 41653064490 posted to both channels. Cardmarket link opened by Edwin: finds the product.

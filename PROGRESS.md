@@ -1,5 +1,10 @@
 # Progress
 
+## 2026-11-03 (v0.6.0)
+- MTG Tradera deals on its own Tradera app: `deals-mtg.json` (15 sets x collector display/pack, play display, gift bundle, bundle; 58/75 have a shop price), collector queried every other call.
+- MTG spread report added to weekly workflow. First run: Final Fantasy is the only clear premium (play display +236% n=2, collector pack +184% n=2); many MTG items ask BELOW Swedish shop prices on Tradera (thin samples).
+- MTG Discord webhook verified (test alert sent locally).
+
 ## 2026-11-03 (v0.5.0)
 - MTG channel: same 4 shops (Webhallen MTG category, Dragon's Lair magic collection, Alphaspel boosters/displays/bundles, SF Bok MTG). Live dry run: 7 / 15 / 161 / 28 sealed.
 - Price-drop alert (in stock, -10%+ vs last seen) for both channels.

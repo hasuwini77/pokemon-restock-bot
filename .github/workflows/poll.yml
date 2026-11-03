@@ -1,0 +1,48 @@
+name: poll
+
+on:
+  schedule:
+    - cron: "*/10 * * * *" # GitHub may delay scheduled runs by several minutes under load
+  workflow_dispatch:
+    inputs:
+      test_alert:
+        description: Send one sample alert to Discord (no scraping)
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: poll
+  cancel-in-progress: false
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm test
+      - if: inputs.test_alert
+        run: node src/test-alert.ts
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_MENTION: ${{ vars.DISCORD_MENTION }}
+      - if: ${{ !inputs.test_alert }}
+        run: npm run poll
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_MENTION: ${{ vars.DISCORD_MENTION }}
+      - name: Save state
+        if: ${{ !inputs.test_alert }}
+        run: |
+          git add state.json
+          git diff --cached --quiet && exit 0
+          git config user.name "restock-bot"
+          git config user.email "restock-bot@users.noreply.github.com"
+          git commit -m "chore: update stock state [skip ci]"
+          git pull --rebase -q && git push

@@ -1,6 +1,7 @@
 {
   "_help": "Each item alerts when a Tradera Buy Now price is below the lowest price for the same product in our Swedish shops (state.json). `match` = regexes that must all hit the title. Optional `maxPrice` (SEK) overrides the shop reference. `minDiscount`: Buy Now must be at least this far below the reference (10%).",
-  "minDiscount": 0.1,
+  "minDiscount": 0.25,
+  "maxBuy": 2500,
   "groups": {
     "30th": "pokemon 30th celebration",
     "etb": "pokemon elite trainer box",

@@ -3,7 +3,7 @@ import type { TraderaItem } from "./tradera.ts";
 import type { State } from "./types.ts";
 
 export interface DealItem { name: string; group: string; match: string[]; cm?: string[]; maxPrice?: number }
-export interface DealsConfig { groups: Record<string, string>; minDiscount?: number; cardmarketShippingSek?: number; items: DealItem[] }
+export interface DealsConfig { groups: Record<string, string>; minDiscount?: number; maxBuy?: number; cardmarketShippingSek?: number; items: DealItem[] }
 /** Cardmarket data + shipping estimate used as an extra price reference. */
 export interface CmRef { index: CmIndex; shippingSek: number; site?: string } // site = Cardmarket URL game path, e.g. "Magic"
 export interface Reference { price: number; shop: string; manual: boolean; url?: string }
@@ -55,11 +55,11 @@ export function groupCeiling(state: State, items: DealItem[], cm?: CmRef | null)
   return refs.length ? Math.max(...refs) - 1 : null;
 }
 
-/** Buy Now listings at least `minDiscount` (0.15 = 15%) below the reference for any item in the group. */
-export function findDeals(listings: TraderaItem[], items: DealItem[], state: State, minDiscount = 0, cm?: CmRef | null): Deal[] {
+/** Buy Now listings at least `minDiscount` (0.15 = 15%) below the reference for any item in the group, priced <= maxBuy kr. */
+export function findDeals(listings: TraderaItem[], items: DealItem[], state: State, minDiscount = 0, cm?: CmRef | null, maxBuy = Infinity): Deal[] {
   const deals: Deal[] = [];
   for (const listing of listings) {
-    if (listing.buyNow == null || JUNK.test(listing.title)) continue;
+    if (listing.buyNow == null || listing.buyNow > maxBuy || JUNK.test(listing.title)) continue;
     for (const item of items) {
       if (!matches(listing.title, item)) continue;
       const ref = reference(state, item, cm);

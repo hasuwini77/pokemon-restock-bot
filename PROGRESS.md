@@ -2,7 +2,7 @@
 
 ## 2026-11-03 (v0.10.0)
 - Spread report is now a short clickable flip list: only gaps >= 20% with 2+ Tradera ads, top 10. Each line links to where to buy (shop page or Cardmarket search) and a Tradera search.
-  - Verified: 21/21 tests; spread run 41653064490 posted to both channels. Unverified: Cardmarket search links with long product names.
+  - Verified: 21/21 tests; spread run 41653064490 posted to both channels. Cardmarket link opened by Edwin: finds the product.
 
 ## 2026-11-03 (v0.9.1)
 - GitHub `schedule` never fired (0 runs in ~2 h). Fix: `rearm` job sleeps 540 s, then re-dispatches poll.yml with GITHUB_TOKEN. Cron kept as restarter; `poll` concurrency group collapses duplicates.

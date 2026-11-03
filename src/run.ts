@@ -66,9 +66,10 @@ async function runChannel(ch: Channel): Promise<boolean> {
       const ceiling = groupCeiling(state, items, cm);
       try {
         if (ceiling == null) throw new Error(`no shop reference price for any ${group} item`);
+        const cap = Math.min(ceiling, cfg.maxBuy ?? Infinity);
         const res = await searchTradera(t.appId, t.appKey, {
           SearchWords: cfg.groups[group],
-          PriceMaximum: Math.min(ceiling, cfg.maxBuy ?? Infinity),
+          PriceMaximum: cap,
           OnlyAuctionsWithBuyNow: true,
           ItemsPerPage: 240,
           PageNumber: 1,
@@ -98,7 +99,7 @@ async function runChannel(ch: Channel): Promise<boolean> {
             note: `${d.item.name} · -${off}% vs ${d.ref.manual ? "your max" : `lowest shop price ${d.ref.price} kr at ${d.ref.shop}`}`,
           });
         }
-        console.log(`[${ch.id}] Tradera [${group}] <= ${ceiling} kr: ${res.items.length} of ${res.total} listings, ${deals.length} deals, ${fresh.length} unseen, ${sent} alerts`);
+        console.log(`[${ch.id}] Tradera [${group}] <= ${cap} kr: ${res.items.length} of ${res.total} listings, ${deals.length} deals, ${fresh.length} unseen, ${sent} alerts`);
       } catch (e) {
         console.error(`[${ch.id}] Tradera [${group}]: FAILED ${e}`);
       }

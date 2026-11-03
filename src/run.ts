@@ -68,13 +68,13 @@ async function runChannel(ch: Channel): Promise<boolean> {
         if (ceiling == null) throw new Error(`no shop reference price for any ${group} item`);
         const res = await searchTradera(t.appId, t.appKey, {
           SearchWords: cfg.groups[group],
-          PriceMaximum: ceiling,
+          PriceMaximum: Math.min(ceiling, cfg.maxBuy ?? Infinity),
           OnlyAuctionsWithBuyNow: true,
           ItemsPerPage: 240,
           PageNumber: 1,
         });
         if (res.errors.length) throw new Error(res.errors.join("; "));
-        const deals = findDeals(res.items, items, state, minDiscount, cm);
+        const deals = findDeals(res.items, items, state, minDiscount, cm, cfg.maxBuy);
         const fresh = deals.filter((d) => !tState.seen[d.listing.id]);
         let sent = 0;
         for (const d of fresh) {

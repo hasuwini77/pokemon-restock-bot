@@ -64,7 +64,7 @@ if (import.meta.main) {
     rows.push(...spreadRows(res.items, cfg.items.filter((i) => i.group === group), state, cm));
     console.log(`[${group}] ${res.items.length} of ${res.total} Buy Now listings`);
   }
-  const text = formatFlips(rows);
+  const text = formatFlips(rows.filter((r) => r.shop != null && r.shop <= (cfg.maxBuy ?? Infinity)));
   console.log(text);
   if (webhook && !process.env.DRY_RUN) {
     const res = await fetch(webhook, {

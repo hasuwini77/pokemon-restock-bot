@@ -108,3 +108,9 @@ test("formatFlips: keeps real gaps only, best first, clickable", async () => {
   assert.match(out, /\[Tradera\]\(https:\/\/www\.tradera\.com\/search\?q=Top\)/);
   assert.equal(formatFlips([row("Low", 5, 5)]), "Nothing worth flipping this week.");
 });
+
+test("maxBuy: listings above the budget are never deals", () => {
+  const ls = [listing("1", "Delta Reign Elite Trainer Box", 600)];
+  assert.equal(findDeals(ls, [etb], state, 0.25).length, 1);
+  assert.equal(findDeals(ls, [etb], state, 0.25, null, 500).length, 0);
+});

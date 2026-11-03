@@ -5,8 +5,8 @@ import type { State } from "./types.ts";
 export interface DealItem { name: string; group: string; match: string[]; cm?: string[]; maxPrice?: number }
 export interface DealsConfig { groups: Record<string, string>; minDiscount?: number; cardmarketShippingSek?: number; items: DealItem[] }
 /** Cardmarket data + shipping estimate used as an extra price reference. */
-export interface CmRef { index: CmIndex; shippingSek: number }
-export interface Reference { price: number; shop: string; manual: boolean }
+export interface CmRef { index: CmIndex; shippingSek: number; site?: string } // site = Cardmarket URL game path, e.g. "Magic"
+export interface Reference { price: number; shop: string; manual: boolean; url?: string }
 export interface Deal { item: DealItem; listing: TraderaItem; ref: Reference }
 
 // Listings that look like the product but aren't the sealed English product.
@@ -36,14 +36,15 @@ export function reference(state: State, item: DealItem, cm?: CmRef | null): Refe
     if (NOT_A_REFERENCE.has(shop)) continue;
     for (const p of Object.values(products)) {
       if (!p.price || NOT_RETAIL.test(p.title) || !matches(p.title, item)) continue;
-      if (!best || p.price < best.price) best = { price: p.price, shop, manual: false };
+      if (!best || p.price < best.price) best = { price: p.price, shop, manual: false, url: p.url };
     }
   }
   if (cm) {
     const p = cmMatch(cm.index, item.cm ?? item.match);
     const price = p ? Math.round(p.trend * cm.index.eurSek + cm.shippingSek) : null;
     if (p && price && (!best || price < best.price))
-      best = { price, shop: `Cardmarket trend${cm.shippingSek ? " + shipping" : ""} (${p.trend.toFixed(2)} €)`, manual: false };
+      best = { price, shop: `Cardmarket trend${cm.shippingSek ? " + shipping" : ""} (${p.trend.toFixed(2)} €)`, manual: false,
+        url: cm.site && `https://www.cardmarket.com/en/${cm.site}/Products/Search?searchString=${encodeURIComponent(p.name)}` };
   }
   return best;
 }

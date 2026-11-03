@@ -4,7 +4,7 @@ import { findDeals, isSealedListing, reference, type DealItem } from "../src/dea
 import { parseDescription, parseSearch } from "../src/tradera.ts";
 import type { State } from "../src/types.ts";
 
-const s = (title: string, price: number) => ({ title, price, inStock: false, firstSeen: "" });
+const s = (title: string, price: number) => ({ title, price, inStock: false, firstSeen: "", url: "https://shop.test/p" });
 const state: State = {
   Webhallen: { a: s("Pokemon ME06 Delta Reign Elite Trainer Box", 849) },
   "SF Bok": { b: s("Pokemon TCG: Delta Reign Elite Trainer Box", 999) },
@@ -16,7 +16,7 @@ const listing = (id: string, title: string, buyNow: number | null) => ({
 });
 
 test("reference = lowest English retail shop price, ignores Japanese", () => {
-  assert.deepEqual(reference(state, etb), { price: 849, shop: "Webhallen", manual: false });
+  assert.deepEqual(reference(state, etb), { price: 849, shop: "Webhallen", manual: false, url: "https://shop.test/p" });
   assert.equal(reference(state, { ...etb, maxPrice: 700 })?.price, 700);
   assert.equal(reference(state, { ...etb, match: ["nonexistent"] }), null);
   const dlOnly: State = { "Dragon's Lair": { x: s("Delta Reign Elite Trainer Box", 1295) } };
@@ -70,7 +70,7 @@ test("spread: median ask vs lowest shop price", async () => {
     listing("3", "TOM Delta Reign Elite Trainer Box", 50),
     listing("4", "Delta Reign Elite Trainer Box", 1600),
   ], [etb], state);
-  assert.deepEqual(rows[0], { name: "Delta Reign ETB", shop: 849, shopName: "Webhallen", n: 3, low: 1200, median: 1400, pct: 65 });
+  assert.deepEqual(rows[0], { name: "Delta Reign ETB", shop: 849, shopName: "Webhallen", shopUrl: "https://shop.test/p", n: 3, low: 1200, median: 1400, pct: 65 });
 });
 
 test("minDiscount: 15% means 849 ref needs <= 721 kr", () => {
@@ -95,4 +95,16 @@ test("cardmarket: cheapest-trend English product becomes the reference when lowe
   const ref = reference(state, etb, { index, shippingSek: 50 });
   assert.equal(ref?.price, 820); // 70 € * 11 + 50 kr < 849 kr Webhallen
   assert.match(ref!.shop, /Cardmarket/);
+});
+
+test("formatFlips: keeps real gaps only, best first, clickable", async () => {
+  const { formatFlips } = await import("../src/spread.ts");
+  const row = (name: string, pct: number | null, n: number) =>
+    ({ name, shop: 1000, shopName: "Webhallen", shopUrl: "https://shop.test/p", n, low: 1, median: 1000 + (pct ?? 0) * 10, pct });
+  const out = formatFlips([row("Low", 10, 5), row("Lonely", 300, 1), row("Mid", 40, 3), row("Top", 80, 2), row("None", null, 0)]);
+  assert.ok(out.indexOf("Top") < out.indexOf("Mid"));
+  assert.ok(!/Low|Lonely|None/.test(out));
+  assert.match(out, /Buy \*\*1\u00a0000 kr\*\* at \[Webhallen\]\(https:\/\/shop\.test\/p\)/);
+  assert.match(out, /\[Tradera\]\(https:\/\/www\.tradera\.com\/search\?q=Top\)/);
+  assert.equal(formatFlips([row("Low", 5, 5)]), "Nothing worth flipping this week.");
 });

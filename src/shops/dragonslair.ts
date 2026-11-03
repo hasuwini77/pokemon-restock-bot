@@ -26,11 +26,11 @@ export function parseShopify(json: string, shop: string, base: string): Product[
   }));
 }
 
-export async function dragonslair(): Promise<Product[]> {
+export async function dragonslair(collection = COLLECTION): Promise<Product[]> {
   const all: Product[] = [];
   for (let page = 1; page <= 6; page++) {
     const batch = parseShopify(
-      await get(`${BASE}/collections/${COLLECTION}/products.json?limit=250&page=${page}`),
+      await get(`${BASE}/collections/${collection}/products.json?limit=250&page=${page}`),
       "Dragon's Lair",
       BASE,
     );

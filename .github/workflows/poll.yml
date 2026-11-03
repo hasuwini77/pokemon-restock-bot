@@ -39,10 +39,14 @@ jobs:
           DISCORD_MENTION: ${{ vars.DISCORD_MENTION }}
           TRADERA_APP_ID: ${{ secrets.TRADERA_APP_ID }}
           TRADERA_APP_KEY: ${{ secrets.TRADERA_APP_KEY }}
+          DISCORD_MTG_WEBHOOK_URL: ${{ secrets.DISCORD_MTG_WEBHOOK_URL }}
+          DISCORD_MTG_MENTION: ${{ vars.DISCORD_MTG_MENTION }}
+          TRADERA_MTG_APP_ID: ${{ secrets.TRADERA_MTG_APP_ID }}
+          TRADERA_MTG_APP_KEY: ${{ secrets.TRADERA_MTG_APP_KEY }}
       - name: Save state
         if: ${{ !inputs.test_alert }}
         run: |
-          git add state.json tradera-state.json
+          git add state*.json tradera-state*.json
           git diff --cached --quiet && exit 0
           git config user.name "restock-bot"
           git config user.email "restock-bot@users.noreply.github.com"

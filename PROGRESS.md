@@ -1,5 +1,11 @@
 # Progress
 
+## 2026-11-03 (v0.5.0)
+- MTG channel: same 4 shops (Webhallen MTG category, Dragon's Lair magic collection, Alphaspel boosters/displays/bundles, SF Bok MTG). Live dry run: 7 / 15 / 161 / 28 sealed.
+- Price-drop alert (in stock, -10%+ vs last seen) for both channels.
+- Fixed: Alphaspel out-of-stock cards fell back to the category id (merged products); hex entities in titles. Pokémon Alphaspel state re-baselined.
+- MTG Tradera deals pending a 2nd Tradera app (100 calls/day per app; Pokémon uses ~76).
+
 ## 2026-11-03 (v0.4.0)
 - Spread report (`src/spread.ts`, weekly Mon 07:00 UTC + manual): Tradera Buy Now median ASK vs lowest shop price per item, 5 calls.
   - First live run: 30th Booster Bundle +44% (n=54), Destined Rivals ETB +66% (n=24), 30th ETB +77% (n=6), 30th Mini Tin +58% (n=7). Asking, not sold.

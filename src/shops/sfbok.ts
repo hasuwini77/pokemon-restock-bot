@@ -5,7 +5,7 @@ import type { Product } from "../types.ts";
 const BASE = "https://www.sfbok.se";
 const CATEGORY = "/sv/spel/samlarkortspel-tcg-ccg/pokemon-trading-card-game";
 
-export function parseSfbok(html: string): Product[] {
+export function parseSfbok(html: string, category = CATEGORY): Product[] {
   const h = html.replace(/\\"/g, '"');
   const out = new Map<string, Product>();
   const re =
@@ -17,7 +17,7 @@ export function parseSfbok(html: string): Product[] {
       shop: "SF Bok",
       id: sku,
       title,
-      url: `${BASE}${CATEGORY}/${sku}/${slug}`,
+      url: `${BASE}${category}/${sku}/${slug}`,
       price: Number(price),
       inStock: Number(qty) > 0,
     });
@@ -25,6 +25,6 @@ export function parseSfbok(html: string): Product[] {
   return [...out.values()];
 }
 
-export async function sfbok(): Promise<Product[]> {
-  return parseSfbok(await get(BASE + CATEGORY));
+export async function sfbok(category = CATEGORY): Promise<Product[]> {
+  return parseSfbok(await get(BASE + category), category);
 }

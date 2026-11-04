@@ -2759,7 +2759,7 @@
   },
   "377246": {
    "title": "Pokemon Scarlet & Violet 8.5: Prismatic Evolutions Super Premium Collection",
-   "inStock": true,
+   "inStock": false,
    "price": 2499,
    "firstSeen": "2026-11-03T12:32:14.509Z",
    "lastAlert": "2026-11-04T08:12:33.621Z"
@@ -2778,7 +2778,7 @@
   },
   "389110": {
    "title": "Pokemon Mega Charizard Ex Ultra Premium Collection",
-   "inStock": true,
+   "inStock": false,
    "price": 2299,
    "firstSeen": "2026-11-04T08:12:33.621Z",
    "lastAlert": "2026-11-04T08:12:33.621Z"
@@ -2817,14 +2817,14 @@
   },
   "396785": {
    "title": "Pokemon SV10: Destined Rivals Display (36 boosters)",
-   "inStock": true,
+   "inStock": false,
    "price": 3499,
    "firstSeen": "2026-11-03T12:32:14.509Z",
    "lastAlert": "2026-11-04T08:12:33.621Z"
   },
   "397074": {
    "title": "Pokemon ME3: Perfect Order Booster Display (36 boosters)",
-   "inStock": true,
+   "inStock": false,
    "price": 1999,
    "firstSeen": "2026-11-04T08:12:33.621Z",
    "lastAlert": "2026-11-04T08:12:33.621Z"
@@ -2850,7 +2850,7 @@
   },
   "398336": {
    "title": "Pokemon ME4 Chaos Rising Elite Trainer Box",
-   "inStock": true,
+   "inStock": false,
    "price": 799,
    "firstSeen": "2026-11-03T12:32:14.509Z",
    "lastAlert": "2026-11-04T08:12:33.621Z"

@@ -82,10 +82,11 @@
   },
   "233526": {
    "title": "Magic The Gathering: Foundations Play Booster Display (36)",
-   "inStock": false,
+   "inStock": true,
    "price": 2099,
    "url": "https://alphaspel.se/1982-boosters-displayer-och-bundles/233526-magic-the-gathering-foundations-play-booster-display-36",
-   "firstSeen": "2026-11-03T13:19:13.125Z"
+   "firstSeen": "2026-11-03T13:19:13.125Z",
+   "lastAlert": "2026-11-04T13:43:49.563Z"
   },
   "242217": {
    "title": "Magic The Gathering: Aetherdrift Play Booster Display (30)",

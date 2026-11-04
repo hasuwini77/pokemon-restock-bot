@@ -61,9 +61,15 @@ jobs:
     needs: poll
     if: ${{ always() && !inputs.test_alert }}
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 30
     steps:
       - run: sleep 540
-      - run: gh workflow run poll.yml --ref main -R ${{ github.repository }}
+      # Retry: one GitHub 500 on dispatch killed the chain for hours (2026-11-04 11:18 UTC).
+      - run: |
+          for i in 1 2 3 4 5 6 7 8; do
+            gh workflow run poll.yml --ref main -R ${{ github.repository }} && exit 0
+            echo "dispatch failed (attempt $i), retrying"; sleep $((i * 30))
+          done
+          exit 1
         env:
           GH_TOKEN: ${{ github.token }}

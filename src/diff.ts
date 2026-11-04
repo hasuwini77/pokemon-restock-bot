@@ -35,6 +35,7 @@ export function diff(state: State, shop: string, products: Product[], now = new 
       title: p.title,
       inStock: p.inStock,
       price: p.price,
+      url: p.url,
       firstSeen: prev?.firstSeen ?? iso,
       lastAlert: kind && cooled ? iso : prev?.lastAlert,
     };

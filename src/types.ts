@@ -12,6 +12,7 @@ export interface ProductState {
   title: string;
   inStock: boolean;
   price: number | null;
+  url?: string;
   firstSeen: string;
   lastAlert?: string;
 }

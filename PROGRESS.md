@@ -1,5 +1,10 @@
 # Progress
 
+## 2026-11-04 (v0.11.2 / v0.11.3)
+- Deal reference: shop prices count only when in stock (all 4 Pokémon shop-priced refs were sold-out list prices); otherwise Cardmarket trend. State now stores product url.
+- Webhallen ghost products: at 08:12 UTC search returned 9 extra hidden products for one run; 5 alerts with dead links (product API 404). Each would-be Webhallen alert is now confirmed via /api/product/{id}. The 5 ghosts reset to out of stock in state.json.
+  - Verified: 5 ghost ids -> false, live id 377250 -> true; dry run OK; 23/23 tests.
+
 ## 2026-11-03 (v0.11.0 / v0.11.1)
 - Tight budget, high EV: `maxBuy: 2500` (caps Tradera PriceMaximum, deal alerts, spread report) and `minDiscount: 0.25` for Pokémon + MTG.
   - MTG collector ceiling 16,994 kr was real (LOTR Collector Box trend 1,552 EUR), not a mismatch.

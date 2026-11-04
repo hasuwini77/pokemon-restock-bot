@@ -49,3 +49,13 @@ export async function webhallen(query = "pokemon", category = /Samlarkortspel\/P
   }
   return all;
 }
+
+/** Search sometimes returns hidden products for one run; their product page is a 404. Network errors count as alive. */
+export async function webhallenAlive(id: string): Promise<boolean> {
+  try {
+    const d = JSON.parse(await get(`${BASE}/api/product/${id}`));
+    return !Array.isArray(d) && !!d?.product;
+  } catch (e) {
+    return !String(e).includes("404");
+  }
+}

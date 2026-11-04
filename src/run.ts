@@ -6,10 +6,13 @@ import { diff } from "./diff.ts";
 import { sendDiscord } from "./discord.ts";
 import { get, sleep } from "./http.ts";
 import { parseDescription, searchTradera } from "./tradera.ts";
+import { webhallenAlive } from "./shops/webhallen.ts";
 import type { Alert, Product, State } from "./types.ts";
 
 const dry = !!process.env.DRY_RUN;
 const only = process.env.CHANNEL; // run a single channel, e.g. CHANNEL=mtg
+// Shops whose search can list ghost products: confirm each would-be alert on the product page first.
+const CONFIRM: Record<string, (id: string) => Promise<boolean>> = { Webhallen: webhallenAlive };
 
 async function runChannel(ch: Channel): Promise<boolean> {
   const state: State = JSON.parse(await readFile(ch.stateFile, "utf8").catch(() => "{}"));
@@ -27,7 +30,17 @@ async function runChannel(ch: Channel): Promise<boolean> {
         const q = byId.get(p.id);
         byId.set(p.id, q ? { ...q, inStock: q.inStock || p.inStock } : p);
       }
-      const watched = [...byId.values()];
+      let watched = [...byId.values()];
+      const confirm = CONFIRM[shop];
+      if (confirm) {
+        const dead = new Set<string>();
+        for (const p of watched) {
+          const prev = state[shop]?.[p.id];
+          if ((!prev || (p.inStock && !prev.inStock)) && !(await confirm(p.id))) dead.add(p.id);
+        }
+        if (dead.size) console.warn(`[${ch.id}] ${shop}: skipped ${dead.size} ghost products (product page 404)`);
+        watched = watched.filter((p) => !dead.has(p.id));
+      }
       let found = diff(state, shop, watched);
       // A burst of "new" means the scrape widened (layout/paging change), not real listings.
       const fresh = found.filter((a) => a.kind === "new").length;

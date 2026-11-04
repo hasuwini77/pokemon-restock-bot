@@ -4,7 +4,7 @@ import { findDeals, isSealedListing, reference, type DealItem } from "../src/dea
 import { parseDescription, parseSearch } from "../src/tradera.ts";
 import type { State } from "../src/types.ts";
 
-const s = (title: string, price: number) => ({ title, price, inStock: false, firstSeen: "", url: "https://shop.test/p" });
+const s = (title: string, price: number) => ({ title, price, inStock: true, firstSeen: "", url: "https://shop.test/p" });
 const state: State = {
   Webhallen: { a: s("Pokemon ME06 Delta Reign Elite Trainer Box", 849) },
   "SF Bok": { b: s("Pokemon TCG: Delta Reign Elite Trainer Box", 999) },
@@ -113,4 +113,9 @@ test("maxBuy: listings above the budget are never deals", () => {
   const ls = [listing("1", "Delta Reign Elite Trainer Box", 600)];
   assert.equal(findDeals(ls, [etb], state, 0.25).length, 1);
   assert.equal(findDeals(ls, [etb], state, 0.25, null, 500).length, 0);
+});
+
+test("reference ignores out-of-stock shop prices", () => {
+  const soldOut: State = { Webhallen: { a: { ...s("Pokemon ME06 Delta Reign Elite Trainer Box", 849), inStock: false } } };
+  assert.equal(reference(soldOut, etb), null);
 });

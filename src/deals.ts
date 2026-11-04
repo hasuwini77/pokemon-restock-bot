@@ -28,14 +28,14 @@ export const matches = (title: string, item: DealItem) => item.match.every((m) =
 // Still watched for restocks, but its prices run above market, so it never sets the "deal" bar.
 const NOT_A_REFERENCE = new Set(["Dragon's Lair"]);
 
-/** Lowest listed shop price for the item, measured from the latest scrape. */
+/** Lowest in-stock shop price (or Cardmarket trend) for the item, measured from the latest scrape. */
 export function reference(state: State, item: DealItem, cm?: CmRef | null): Reference | null {
   if (item.maxPrice) return { price: item.maxPrice, shop: "your max price", manual: true };
   let best: Reference | null = null;
   for (const [shop, products] of Object.entries(state)) {
     if (NOT_A_REFERENCE.has(shop)) continue;
     for (const p of Object.values(products)) {
-      if (!p.price || NOT_RETAIL.test(p.title) || !matches(p.title, item)) continue;
+      if (!p.price || !p.inStock || NOT_RETAIL.test(p.title) || !matches(p.title, item)) continue; // out of stock = not a price you can pay
       if (!best || p.price < best.price) best = { price: p.price, shop, manual: false, url: p.url };
     }
   }

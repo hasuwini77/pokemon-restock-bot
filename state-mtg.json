@@ -173,9 +173,10 @@
   },
   "355041": {
    "title": "Magic The Gathering: Star Trek Bundle",
-   "inStock": false,
+   "inStock": true,
    "price": 799,
-   "firstSeen": "2026-11-03T13:19:13.125Z"
+   "firstSeen": "2026-11-03T13:19:13.125Z",
+   "lastAlert": "2026-11-04T09:20:17.951Z"
   },
   "355042": {
    "title": "Magic The Gathering: Star Trek \"Beam Me Up\" Bundle",

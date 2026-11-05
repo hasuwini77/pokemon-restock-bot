@@ -3235,10 +3235,11 @@
   },
   "377247": {
    "title": "Pokemon Scarlet & Violet 10: Destined Rivals Booster",
-   "inStock": false,
-   "price": null,
+   "inStock": true,
+   "price": 119,
    "url": "https://www.webhallen.com/se/product/377247",
-   "firstSeen": "2026-11-03T12:32:14.509Z"
+   "firstSeen": "2026-11-03T12:32:14.509Z",
+   "lastAlert": "2026-11-05T12:53:24.670Z"
   },
   "377250": {
    "title": "Pokemon Scarlet & Violet 10: Destined Rivals Elite Trainer Box",

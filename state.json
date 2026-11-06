@@ -1267,10 +1267,11 @@
   },
   "15662416331100": {
    "title": "Pokemon Heat Wave Arena Booster Box Display (Japansk)[sv9a]",
-   "inStock": false,
-   "price": 1949,
+   "inStock": true,
+   "price": 1895,
    "url": "https://dragonslair.se/products/pokemon-heat-wave-arena-booster-box-display-japansk",
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-06T11:33:37.391Z"
   },
   "15631285715292": {
    "title": "Pokémon TCG: Mega Evolution - Chaos Rising Premium Checklane Blister",

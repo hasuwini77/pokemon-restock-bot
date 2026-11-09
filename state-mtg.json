@@ -90,10 +90,11 @@
   },
   "242217": {
    "title": "Magic The Gathering: Aetherdrift Play Booster Display (30)",
-   "inStock": false,
+   "inStock": true,
    "price": 2099,
    "url": "https://alphaspel.se/1982-boosters-displayer-och-bundles/242217-magic-the-gathering-aetherdrift-play-booster-display-30",
-   "firstSeen": "2026-11-03T13:19:13.125Z"
+   "firstSeen": "2026-11-03T13:19:13.125Z",
+   "lastAlert": "2026-11-09T09:47:31.809Z"
   },
   "297650": {
    "title": "Magic The Gathering: Marvel's Spider-Man Play Booster Display (30)",

@@ -3603,7 +3603,7 @@
   },
   "353250": {
    "title": "Pokemon TCG: Mega Evolution - Pitch Black Checklane Blister",
-   "inStock": true,
+   "inStock": false,
    "price": 99,
    "url": "https://alphaspel.se/1762-pokemon-tcg/353250-pokemon-tcg-mega-evolution-pitch-black-checklane-blister",
    "firstSeen": "2026-11-03T13:18:56.810Z"
@@ -3670,11 +3670,11 @@
   },
   "361794": {
    "title": "Pokémon TCG: 30th Celebration Ditto Premium Collection",
-   "inStock": false,
+   "inStock": true,
    "price": 899,
    "url": "https://alphaspel.se/1762-pokemon-tcg/361794-pokemon-tcg-30th-celebration-ditto-premium-collection",
    "firstSeen": "2026-11-05T11:06:30.630Z",
-   "lastAlert": "2026-11-06T15:16:49.571Z"
+   "lastAlert": "2026-11-09T11:24:07.306Z"
   },
   "362603": {
    "title": "Pokémon TCG: 2026 Mega Forces Mega Darkrai ex Tin",

@@ -1747,10 +1747,11 @@
   },
   "15554385903964": {
    "title": "Pokémon TCG - Black Bolt Deluxe Booster Japansk",
-   "inStock": false,
-   "price": 569,
+   "inStock": true,
+   "price": 695,
    "url": "https://dragonslair.se/products/pokemon-tcg-black-bolt-deluxe-booster-japansk-pokemon",
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-10T17:20:21.522Z"
   },
   "15554377056604": {
    "title": "Pokémon TCG - Scarlet & Violet Obsidian Flames 3-pack Blister - Houndstone",
@@ -3266,6 +3267,14 @@
    "url": "https://dragonslair.se/products/pokemon-white-flare-deluxe-booster-box-display-sv11wjapansk",
    "firstSeen": "2026-11-10T15:42:59.911Z",
    "lastAlert": "2026-11-10T15:42:59.911Z"
+  },
+  "15969964786012": {
+   "title": "Pokemon Black Bolt Deluxe Booster Box Display (sv11B)(Japansk)",
+   "inStock": true,
+   "price": 2749,
+   "url": "https://dragonslair.se/products/pokemon-black-bolt-deluxe-booster-box-display-sv11bjapansk",
+   "firstSeen": "2026-11-10T17:20:21.522Z",
+   "lastAlert": "2026-11-10T17:20:21.522Z"
   }
  },
  "Webhallen": {

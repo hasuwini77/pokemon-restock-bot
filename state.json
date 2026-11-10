@@ -1738,11 +1738,12 @@
    "firstSeen": "2026-11-03T12:32:06.664Z"
   },
   "15554385936732": {
-   "title": "Pokémon TCG - White Flare Deluxe Booster Japansk",
-   "inStock": false,
-   "price": 549,
+   "title": "Pokémon TCG - White Flare Deluxe Japansk Booster (35 Kort) (sv11W)",
+   "inStock": true,
+   "price": 569,
    "url": "https://dragonslair.se/products/pokemon-tcg-white-flare-deluxe-booster-japansk-pokemon",
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-10T15:42:59.911Z"
   },
   "15554385903964": {
    "title": "Pokémon TCG - Black Bolt Deluxe Booster Japansk",
@@ -3257,6 +3258,14 @@
    "url": "https://dragonslair.se/products/pokemon-tcg-30th-celebration-booster",
    "firstSeen": "2026-11-08T21:22:57.641Z",
    "lastAlert": "2026-11-08T21:22:57.641Z"
+  },
+  "15968215400796": {
+   "title": "Pokemon White Flare Deluxe Booster Box Display (sv11W)(Japansk)",
+   "inStock": true,
+   "price": 2249,
+   "url": "https://dragonslair.se/products/pokemon-white-flare-deluxe-booster-box-display-sv11wjapansk",
+   "firstSeen": "2026-11-10T15:42:59.911Z",
+   "lastAlert": "2026-11-10T15:42:59.911Z"
   }
  },
  "Webhallen": {

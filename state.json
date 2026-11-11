@@ -3601,10 +3601,11 @@
  "Alphaspel": {
   "349392": {
    "title": "Pokemon TCG: Mega Evolution - Chaos Rising Booster Pack",
-   "inStock": false,
+   "inStock": true,
    "price": 79,
    "url": "https://alphaspel.se/1762-pokemon-tcg/349392-pokemon-tcg-mega-evolution-chaos-rising-booster-pack",
-   "firstSeen": "2026-11-03T13:18:56.810Z"
+   "firstSeen": "2026-11-03T13:18:56.810Z",
+   "lastAlert": "2026-11-11T14:55:31.034Z"
   },
   "353242": {
    "title": "Pokemon TCG: Lumiose City Mini Tin",

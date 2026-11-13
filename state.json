@@ -3285,12 +3285,20 @@
    "lastAlert": "2026-11-11T12:39:53.042Z"
   },
   "15983263842652": {
-   "title": "Pokémon TCG: Summer Tin 2026 - Mega Clefable EX (max 1/kund) (Kopia)",
-   "inStock": false,
-   "price": 425,
-   "url": "https://dragonslair.se/products/pokemon-tcg-summer-tin-2026-mega-clefable-ex-max-1-kund",
+   "title": "Pokémon TCG Mega Forces Tin - Mega Dragonite ex",
+   "inStock": true,
+   "price": 399,
+   "url": "https://dragonslair.se/products/pokemon-tcg-mega-forces-tin-mega-dragonite-ex",
    "firstSeen": "2026-11-13T17:35:01.135Z",
    "lastAlert": "2026-11-13T17:35:01.135Z"
+  },
+  "15983294054748": {
+   "title": "Pokémon TCG Mega Forces Tin - Mega Darkrai ex",
+   "inStock": false,
+   "price": 399,
+   "url": "https://dragonslair.se/products/pokemon-tcg-mega-forces-tin-mega-darkrai-ex",
+   "firstSeen": "2026-11-13T17:44:52.474Z",
+   "lastAlert": "2026-11-13T17:44:52.474Z"
   }
  },
  "Webhallen": {

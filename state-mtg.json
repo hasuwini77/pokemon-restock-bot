@@ -45,10 +45,11 @@
   },
   "748646": {
    "title": "MTG: Star Trek - Bundle",
-   "inStock": false,
+   "inStock": true,
    "price": 899,
    "url": "https://www.sfbok.se/sv/spel/samlarkortspel-tcg-ccg/magic-the-gathering/748646/mtg-star-trek-bundle",
-   "firstSeen": "2026-11-03T13:19:10.808Z"
+   "firstSeen": "2026-11-03T13:19:10.808Z",
+   "lastAlert": "2026-11-13T08:42:48.092Z"
   },
   "750891": {
    "title": "MTG: Marvel Darkhold Destiny - Bundle",

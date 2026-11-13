@@ -3294,11 +3294,19 @@
   },
   "15983294054748": {
    "title": "Pokémon TCG Mega Forces Tin - Mega Darkrai ex",
-   "inStock": false,
+   "inStock": true,
    "price": 399,
    "url": "https://dragonslair.se/products/pokemon-tcg-mega-forces-tin-mega-darkrai-ex",
    "firstSeen": "2026-11-13T17:44:52.474Z",
    "lastAlert": "2026-11-13T17:44:52.474Z"
+  },
+  "15983338586460": {
+   "title": "Pokémon TCG Mega Forces Tin - Mega Dragonite ex (Kopia)",
+   "inStock": false,
+   "price": 399,
+   "url": "https://dragonslair.se/products/pokemon-tcg-mega-forces-tin-mega-dragonite-ex-kopia",
+   "firstSeen": "2026-11-13T17:54:43.599Z",
+   "lastAlert": "2026-11-13T17:54:43.599Z"
   }
  },
  "Webhallen": {

@@ -87,17 +87,19 @@
   },
   "750950": {
    "title": "Pokemon TCG: Delta Reign Booster",
-   "inStock": false,
+   "inStock": true,
    "price": 95,
    "url": "https://www.sfbok.se/sv/spel/samlarkortspel-tcg-ccg/pokemon-trading-card-game/750950/pokemon-tcg-delta-reign-booster",
-   "firstSeen": "2026-11-03T12:32:01.184Z"
+   "firstSeen": "2026-11-03T12:32:01.184Z",
+   "lastAlert": "2026-11-17T08:27:30.519Z"
   },
   "750951": {
    "title": "Pokemon TCG: Delta Reign 3-Pack Blister",
-   "inStock": false,
+   "inStock": true,
    "price": 285,
    "url": "https://www.sfbok.se/sv/spel/samlarkortspel-tcg-ccg/pokemon-trading-card-game/750951/pokemon-tcg-delta-reign-3-pack-blister",
-   "firstSeen": "2026-11-03T12:32:01.184Z"
+   "firstSeen": "2026-11-03T12:32:01.184Z",
+   "lastAlert": "2026-11-17T08:27:30.519Z"
   }
  },
  "Dragon's Lair": {

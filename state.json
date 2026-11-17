@@ -73,10 +73,11 @@
   },
   "750948": {
    "title": "Pokemon TCG: Delta Reign Elite Trainer Box",
-   "inStock": false,
+   "inStock": true,
    "price": 999,
    "url": "https://www.sfbok.se/sv/spel/samlarkortspel-tcg-ccg/pokemon-trading-card-game/750948/pokemon-tcg-delta-reign-elite-trainer-box",
-   "firstSeen": "2026-11-03T12:32:01.184Z"
+   "firstSeen": "2026-11-03T12:32:01.184Z",
+   "lastAlert": "2026-11-17T09:06:54.576Z"
   },
   "750949": {
    "title": "Pokemon TCG: Delta Reign Booster Bundle",

@@ -343,10 +343,11 @@
   },
   "15693327204700": {
    "title": "Magic The Gathering The Hobbit Collector Booster",
-   "inStock": false,
+   "inStock": true,
    "price": 849,
    "url": "https://dragonslair.se/products/magic-the-gathering-the-hobbit-collector-booster",
-   "firstSeen": "2026-11-03T13:19:13.179Z"
+   "firstSeen": "2026-11-03T13:19:13.179Z",
+   "lastAlert": "2026-11-17T20:09:15.485Z"
   },
   "15693341098332": {
    "title": "Magic The Gathering The Hobbit Play Booster Display",

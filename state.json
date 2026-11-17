@@ -81,10 +81,11 @@
   },
   "750949": {
    "title": "Pokemon TCG: Delta Reign Booster Bundle",
-   "inStock": false,
+   "inStock": true,
    "price": 549,
    "url": "https://www.sfbok.se/sv/spel/samlarkortspel-tcg-ccg/pokemon-trading-card-game/750949/pokemon-tcg-delta-reign-booster-bundle",
-   "firstSeen": "2026-11-03T12:32:01.184Z"
+   "firstSeen": "2026-11-03T12:32:01.184Z",
+   "lastAlert": "2026-11-17T09:55:47.065Z"
   },
   "750950": {
    "title": "Pokemon TCG: Delta Reign Booster",

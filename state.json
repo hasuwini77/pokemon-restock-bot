@@ -1326,10 +1326,11 @@
   },
   "15940316561756": {
    "title": "Pokémon TCG: Mega Evolution - Delta Reign Booster Bundle (Max 3 per kund)",
-   "inStock": false,
+   "inStock": true,
    "price": 599,
    "url": "https://dragonslair.se/products/pokemon-tcg-mega-evolution-delta-reign-booster-bundle",
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-19T18:00:36.496Z"
   },
   "15940293296476": {
    "title": "Pokémon TCG: Mega Evolution - Delta Reign Elite Trainer Box (Max 1 per kund)",
@@ -3353,7 +3354,7 @@
   },
   "16001386021212": {
    "title": "Pokemon Sword & Shield Legendary Heartbeat Booster (Japansk)(S3A)",
-   "inStock": false,
+   "inStock": true,
    "price": 109,
    "url": "https://dragonslair.se/products/pokemon-sword-shield-fusion-arts-booster-japansks8-copy",
    "firstSeen": "2026-11-19T17:50:50.089Z",

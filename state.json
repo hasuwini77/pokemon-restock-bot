@@ -1989,17 +1989,19 @@
   },
   "15554276426076": {
    "title": "Pokémon TCG: Scarlet & Violet -  Ancient Roar Booster Japansk",
-   "inStock": false,
-   "price": 45,
+   "inStock": true,
+   "price": 39,
    "url": "https://dragonslair.se/products/pokemon-tcg-scarlet-violet-ancient-roar-booster-japansk-pokemon",
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-19T16:23:06.312Z"
   },
   "15554276393308": {
-   "title": "Pokémon TCG: Scarlet & Violet -  Future Flash Booster Japansk",
-   "inStock": false,
-   "price": 50,
+   "title": "Pokemon Future Flash Booster Pack (Japansk)( SV4M )",
+   "inStock": true,
+   "price": 35,
    "url": "https://dragonslair.se/products/pokemon-tcg-scarlet-violet-future-flash-booster-japansk-pokemon",
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-19T16:23:06.312Z"
   },
   "15554264826204": {
    "title": "Pokemon TCG Azure Legends Tin - Xerneas",

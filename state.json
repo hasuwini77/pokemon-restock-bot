@@ -1398,10 +1398,11 @@
   },
   "15799834640732": {
    "title": "Pokémon TCG: 30th Celebration 2-Pack Blister - Max 1 /kund",
-   "inStock": false,
-   "price": 299,
+   "inStock": true,
+   "price": 339,
    "url": "https://dragonslair.se/products/pokemon-tcg-30th-celebration-2-pack-blister-max-1-kund",
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-20T10:19:25.864Z"
   },
   "15799806263644": {
    "title": "Pokémon TCG: 30th Celebration Tin Greninja - Max 1 /kund",

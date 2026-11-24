@@ -228,10 +228,11 @@
   },
   "355042": {
    "title": "Magic The Gathering: Star Trek \"Beam Me Up\" Bundle",
-   "inStock": false,
+   "inStock": true,
    "price": 1249,
    "url": "https://alphaspel.se/1982-boosters-displayer-och-bundles/355042-magic-the-gathering-star-trek-beam-me-up-bundle",
-   "firstSeen": "2026-11-03T13:19:13.125Z"
+   "firstSeen": "2026-11-03T13:19:13.125Z",
+   "lastAlert": "2026-11-24T14:28:38.076Z"
   },
   "355043": {
    "title": "Magic The Gathering: Star Trek Collector Booster Pack",

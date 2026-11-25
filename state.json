@@ -1251,10 +1251,11 @@
   },
   "15631291973980": {
    "title": "Pokemon TCG Gem Pack Vol. 3 Booster (Kinesisk) 4 kort",
-   "inStock": false,
-   "price": 69,
+   "inStock": true,
+   "price": 59,
    "url": "https://dragonslair.se/products/pokemon-tcg-gem-pack-vol-3-booster-kinesisk-4-kort-pokemon",
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-25T18:45:29.877Z"
   },
   "15554457895260": {
    "title": "Pokémon TCG - Mega Charizard X ex Ultra Premium Collection (Max 2 per kund)",
@@ -3410,6 +3411,14 @@
    "url": "https://dragonslair.se/products/pokemon-space-juggler-booster-s10pjapansk",
    "firstSeen": "2026-11-19T18:10:27.222Z",
    "lastAlert": "2026-11-19T18:10:27.222Z"
+  },
+  "16019010158940": {
+   "title": "Pokemon TCG Gem Pack Vol. 3 Booster Box (Kinesisk)(18-pack)",
+   "inStock": false,
+   "price": 449,
+   "url": "https://dragonslair.se/products/pokemon-tcg-gem-pack-vol-3-booster-box-kinesisk18-pack",
+   "firstSeen": "2026-11-25T18:45:29.877Z",
+   "lastAlert": "2026-11-25T18:45:29.877Z"
   }
  },
  "Webhallen": {

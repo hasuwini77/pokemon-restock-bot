@@ -1119,10 +1119,11 @@
   },
   "15680380993884": {
    "title": "Pokemon Stellar Crystal Booster CSV9C (5 Kort) (Kinesisk)",
-   "inStock": false,
-   "price": 49,
+   "inStock": true,
+   "price": 29,
    "url": "https://dragonslair.se/products/pokemon-stellar-crystal-booster-csv9c-5-kort-kinesisk",
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-25T19:04:52.516Z"
   },
   "15654792429916": {
    "title": "Pokemon Collect 151 Surprise Booster Box (151C) Kinesisk(15 st booster)",
@@ -1273,10 +1274,11 @@
   },
   "15682504065372": {
    "title": "Pokemon Stellar Crystal Slim Booster Box Display CSV9C (15 Boosters) (Kinesiska)",
-   "inStock": false,
-   "price": 589,
+   "inStock": true,
+   "price": 359,
    "url": "https://dragonslair.se/products/pokemon-stellar-crystal-slim-booster-box-display-csv9c-15-boosters-kinesisk",
-   "firstSeen": "2026-11-03T12:32:06.664Z"
+   "firstSeen": "2026-11-03T12:32:06.664Z",
+   "lastAlert": "2026-11-25T19:04:52.516Z"
   },
   "15554560164188": {
    "title": "Pokémon TCG - Ascended Heroes Mega Feraligatr ex Box",

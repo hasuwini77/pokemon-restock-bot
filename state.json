@@ -3468,7 +3468,7 @@
   },
   "16025519915356": {
    "title": "Pokemon Stellar Crystal JUMBO Booster Box Display CSV9C (6 Boosters) (Kinesiska)",
-   "inStock": false,
+   "inStock": true,
    "price": 1295,
    "url": "https://dragonslair.se/products/pokemon-stellar-crystal-jumbo-booster-box-display-csv9c-6-boosters-kinesiska",
    "firstSeen": "2026-11-27T15:35:54.976Z",
@@ -3489,6 +3489,14 @@
    "url": "https://dragonslair.se/products/pokemon-lugia-frame-packkinesisk-2-st-booster-frame",
    "firstSeen": "2026-11-27T18:39:53.719Z",
    "lastAlert": "2026-11-27T18:39:53.719Z"
+  },
+  "16026118553948": {
+   "title": "Pokemon Giratina Frame Pack (Kinesisk) (2 st booster + Frame)",
+   "inStock": true,
+   "price": 295,
+   "url": "https://dragonslair.se/products/pokemon-giratina-frame-pack-kinesisk-2-st-booster-frame",
+   "firstSeen": "2026-11-27T18:49:36.877Z",
+   "lastAlert": "2026-11-27T18:49:36.877Z"
   }
  },
  "Webhallen": {

@@ -1121,7 +1121,7 @@
    "firstSeen": "2026-11-03T12:32:06.664Z"
   },
   "15680380993884": {
-   "title": "Pokemon Stellar Crystal Booster CSV9C (5 Kort) (Kinesisk)",
+   "title": "Pokemon Stellar Crystal Booster CSV9C (5 Kort) (Kinesisk)(17.0)",
    "inStock": true,
    "price": 29,
    "url": "https://dragonslair.se/products/pokemon-stellar-crystal-booster-csv9c-5-kort-kinesisk",
@@ -3457,6 +3457,14 @@
    "url": "https://dragonslair.se/products/pokemon-tcg-151c-4-0-jumbo-booster-kinesisk-20-kort",
    "firstSeen": "2026-11-27T14:17:57.469Z",
    "lastAlert": "2026-11-27T14:17:57.469Z"
+  },
+  "16025461326172": {
+   "title": "Pokemon Stellar Crystal JUMBO Booster CSV9C (5 Kort) (Kinesisk)(17.0)",
+   "inStock": false,
+   "price": 245,
+   "url": "https://dragonslair.se/products/pokemon-stellar-crystal-jumbo-booster-csv9c-5-kort-kinesisk17-0",
+   "firstSeen": "2026-11-27T15:26:13.320Z",
+   "lastAlert": "2026-11-27T15:26:13.320Z"
   }
  },
  "Webhallen": {
